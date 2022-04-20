@@ -2,6 +2,9 @@ package starb.client;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -10,18 +13,17 @@ import java.io.File;
 import java.io.IOException;
 
 public class PuzzleDrawingPanel extends JComponent{
-    private static final int WIDTH = 650;
-    private static final int HEIGHT = 650;
+    private static final int WIDTH = 550;
+    private static final int HEIGHT = 550;
 
     static final int cols = 10;
     static final int rows = 10;
-    static final int originX = 23;
-    static final int originY = 37;
-    static final int cellSide = 59;
+    static final int originX = 10;
+    static final int originY = 10;
+    static final int cellSide = 50;
 
     public PuzzleDrawingPanel() {
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-
         this.addMouseListener( new DrawPanelMouseListener() );
     }
 
@@ -36,6 +38,7 @@ public class PuzzleDrawingPanel extends JComponent{
         for(int i = 0; i < cols + 1; i++){
             g.drawLine(originX + (i * cellSide), originY, originX+(i * cellSide), originY + (rows * cellSide));
         }
+       
 
         
     }
