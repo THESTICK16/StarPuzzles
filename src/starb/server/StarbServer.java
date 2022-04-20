@@ -21,7 +21,6 @@ public class StarbServer {
         }
         server.setExecutor(Executors.newCachedThreadPool());
 
-        // TODO: Set up HttpHandlers here...
         server.createContext("/", new ExampleHandler());
 
         System.out.println("Starting web server on port: " + PORT);
