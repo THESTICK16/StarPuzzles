@@ -3,23 +3,29 @@ package starb;
 import jdk.jshell.spi.ExecutionControl;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class Parser {
 
     private File file;
-    private int height;
-    private int width;
-    private int[][] board;
+    private int dimension;
+    private TreeMap<Integer,ArrayList<Coordinate>> inv = new TreeMap<>();
+    private ArrayList<Coordinate> solutions = new ArrayList<>();
 
     public Parser(){};
 
-    public int getHeight() {
-        return height;
+    public int getDimension(){
+        return dimension;
     }
 
-    public int getWidth(){
-        return width;
+    public TreeMap<Integer,ArrayList<Coordinate>> getInv(){
+        return inv;
+    }
+
+    public ArrayList<Coordinate> getSolutions(){
+        return solutions;
     }
 
     private void readFile(String f){
@@ -31,7 +37,7 @@ public class Parser {
         }
     }
 
-    private int[][] parseFile(){
+    private void parseFile(){
         try{
             StringBuilder sb = new StringBuilder();
             Scanner scan = new Scanner(this.file);
@@ -42,7 +48,6 @@ public class Parser {
             System.out.println("An error occurred parsing the file.");
             e.printStackTrace();
         }
-        return null;
     }
 
 
