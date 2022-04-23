@@ -10,35 +10,25 @@ import java.util.TreeMap;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PuzzleAdtTest {
-
-    PuzzleAdt p = new PuzzleAdt();
     PuzzleAdt pFile = new PuzzleAdt("puzzles/puzzle-1-1-1.txt");
 
-    @Test
-    void convertData() {
-        TreeMap<Integer, ArrayList<Coordinate>> test = new TreeMap<>();
 
-        ArrayList<Coordinate> l = new ArrayList<>();
-
-        Coordinate c = new Coordinate(0,0);
-        Coordinate x = new Coordinate(1,1);
-        Coordinate y = new Coordinate(2,2);
-
-        l.add(c);
-        l.add(x);
-        l.add(y);
-
-        test.put(1, l);
-
-
-        p.convertData(test,3);
-        System.out.println(p.getBoard().toString());
-
-    }
 
     @Test
-    void convertData2(){
-        System.out.println(pFile.toString());
-    }
+    void toStringTest(){
+        String expected = """
+                [1 ,1 ,1 ,1 ,1 ,1 ,1 ,1 ,2 ,2 ]
+                [1 ,1 ,1 ,1 ,1 ,1 ,5 ,1 ,2 ,2 ]
+                [3 ,4 ,4 ,4 ,1 ,5 ,5 ,5 ,2 ,2 ]
+                [3 ,3 ,3 ,3 ,6 ,7 ,7 ,5 ,2 ,2 ]
+                [3 ,3 ,3 ,6 ,6 ,6 ,7 ,7 ,2 ,2 ]
+                [3 ,3 ,8 ,6 ,6 ,6 ,7 ,7 ,2 ,2 ]
+                [3 ,3 ,8 ,8 ,8 ,7 ,7 ,7 ,9 ,2 ]
+                [3 ,3 ,3 ,3 ,3 ,3 ,7 ,7 ,9 ,2 ]
+                [3 ,10,10,10,10,10,10,10,9 ,9 ]
+                [10,10,10,10,10,10,10,10,10,9 ]
+                """;
 
+        assertEquals(expected,pFile.toString());
+    }
 }

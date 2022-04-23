@@ -11,9 +11,6 @@ public class PuzzleAdt{
     private int numStars;
     private ArrayList<Coordinate> solution;
 
-    public PuzzleAdt(){
-        Parser p = new Parser();
-    }
 
     public PuzzleAdt(String fileString){
         Parser p = new Parser(fileString);
@@ -21,6 +18,7 @@ public class PuzzleAdt{
         dimension = p.getDimension();
         numStars = p.getStars();
         board = convertData(p.getData(),dimension);
+        solution = p.getSolutions();
     }
 
     public int[][] getBoard() {
@@ -37,6 +35,10 @@ public class PuzzleAdt{
 
     public ArrayList<Coordinate> getSolution() {
         return solution;
+    }
+
+    public void clearPuzzle(){
+        board = null;
     }
 
     public int[][] convertData(TreeMap<Integer,ArrayList<Coordinate>> map, int dim){
@@ -60,8 +62,12 @@ public class PuzzleAdt{
             sb.append('[');
             for(int j = 0; j < board[0].length; j++){
                 sb.append(board[i][j]);
+                if(board[i][j] < 10){
+                    sb.append(' ');
+                }
                 sb.append(',');
             }
+            sb.deleteCharAt(sb.length()-1);
             sb.append("]\n");
         }
         return sb.toString();
