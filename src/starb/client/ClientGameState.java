@@ -8,7 +8,7 @@ public class ClientGameState {
     /**
      * The puzzle containing the game state
      */
-    private Puzzle game;
+    private PuzzleAdt game;
 
 //    /**
 //     * the array containing the representation of the game state
@@ -22,16 +22,16 @@ public class ClientGameState {
      * constants that contain the values that can be represented in 'game'
      */
     //Whoever is making the Puzzle ADT could make these static constants to increase encapsulation (i.e. accessing Puzzle.STAR)
-    private final char STAR = '*';
-    private final char SPACE = ' ';
-    private final char DOT = '.';
+    static final char STAR = '*';
+    static final char SPACE = ' ';
+    static final char CIRCLE = '.';
     private int boardSize;
 
     /**
      * The game state of the star puzzle
      * @param game the puzzle containg the game board representation
      */
-    public ClientGameState(Puzzle game) {
+    public ClientGameState(PuzzleAdt game) {
         this.game = game;
     }
 
@@ -40,7 +40,7 @@ public class ClientGameState {
      * @param puzzleFilePath a text representation of the file containg the data for the Puzzle
      */
     public ClientGameState(String puzzleFilePath) {
-        game = new Puzzle(puzzleFilePath);
+        game = new PuzzleAdt(/*puzzleFilePath*/);
     }
 
 /*
@@ -60,7 +60,7 @@ public class ClientGameState {
      *      or trying to access an out-of-bounds index on the array
      */
     public boolean alterBoard(char action, int locationX, int locationY) {
-        if ((action != STAR && action != SPACE && action != DOT) || locationX >= boardSize || locationY >= boardSize) {
+        if ((action != STAR && action != SPACE && action != CIRCLE) || locationX >= boardSize || locationY >= boardSize) {
             return false;
         }
 
@@ -68,7 +68,7 @@ public class ClientGameState {
         return true;
     }
 
-    public Puzzle getGame() {
+    public PuzzleAdt getGame() {
         return game;
     }
 
