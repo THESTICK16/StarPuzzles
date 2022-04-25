@@ -7,8 +7,8 @@ public class ClientGameStateTest {
     ClientGameState cGS;
     ClientGameState cGS2;
     ClientGameState stringCGS;
-    Puzzle puz;
-    Puzzle puz2;
+    PuzzleAdt puz;
+    PuzzleAdt puz2;
     String puzPath = "puzzle-1-1-1.txt";
 
     @org.junit.Before
