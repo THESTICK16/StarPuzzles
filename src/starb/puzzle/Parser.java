@@ -66,7 +66,6 @@ public class Parser {
         // Pulling Solution
         finalString.append(line[line.length-1]);
 
-
         return finalString.toString();
     }
 

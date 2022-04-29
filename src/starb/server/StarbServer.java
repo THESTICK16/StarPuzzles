@@ -21,7 +21,7 @@ public class StarbServer {
         }
         server.setExecutor(Executors.newCachedThreadPool());
 
-        server.createContext("/", new PuzzleHandler());
+        server.createContext("/puzzles", new PuzzleHandler());
 
         System.out.println("Starting web server on port: " + PORT);
         server.start();

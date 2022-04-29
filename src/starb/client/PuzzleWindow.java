@@ -23,4 +23,8 @@ public class PuzzleWindow extends JFrame{
         this.pack();
     }
 
+    public void puzzleRepaint(){
+        graphicsPanel.repaint();
+    }
+
 }

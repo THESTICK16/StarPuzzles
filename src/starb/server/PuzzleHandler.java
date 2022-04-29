@@ -4,7 +4,7 @@ import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-import starb.Parser;
+import starb.puzzle.Parser;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -15,13 +15,11 @@ public class PuzzleHandler implements HttpHandler{
     public void handle(HttpExchange exchange) throws IOException {
         URI uri = exchange.getRequestURI();
         String p = uri.getPath();
-        String fileName = p.substring(p.lastIndexOf('/') + 1);
+        String fileName = p;
 
-        Parser parse = new Parser(fileName);
-        String p1 = parse.getData().toString();
+        starb.puzzle.Parser parse = new Parser();
 
-        //Get PuzzleADT
-        PuzzleAdt puzzle = new PuzzleAdt();
+        String p1 = parse.puzzleFileToString(fileName);
 
         //send string version of puzzle
         String response = p1; 
