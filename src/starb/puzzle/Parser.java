@@ -113,11 +113,11 @@ public class Parser {
         return p;
     }
 
-    public int getNumStars(String boardString){
+    private int getNumStars(String boardString){
         return Integer.parseInt(boardString.split("\n\n")[0].split(" ")[1]);
     }
 
-    public int[][] getBoard(String boardString){
+    private int[][] getBoard(String boardString){
         String[] board = boardString.split("\n\n")[1].split("\n");
         int[][] b = new int[board.length][board.length];
 
@@ -130,7 +130,7 @@ public class Parser {
         return b;
     }
 
-    public ArrayList<Coordinate> getSolution(String boardString){
+    private ArrayList<Coordinate> getSolution(String boardString){
         String[] solution = boardString.split("\n\n")[2].split(" ");
         ArrayList<Coordinate> l = new ArrayList<>();
         for(int i = 0; i < solution.length; i++){
