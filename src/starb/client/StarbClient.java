@@ -9,10 +9,13 @@ import java.net.http.HttpResponse;
 
 public class StarbClient {
 
+    public static PuzzleWindow screen= new PuzzleWindow();
+
     public static void main( String[] args ) throws IOException, InterruptedException {
+        
         // Start the GUI
         EventQueue.invokeLater( () -> {
-            new PuzzleWindow().setVisible(true);
+            screen.setVisible(true);
         } );
 
         //create the client
@@ -25,8 +28,14 @@ public class StarbClient {
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println("Response status: " + response.statusCode());    
-        System.out.println("Response body: " + response.body());
+        //response is puzzle in string format
+
+
+        //create board with sections
+        //repaint 
+        screen.puzzleRepaint();
+
+   
     }
     
 
