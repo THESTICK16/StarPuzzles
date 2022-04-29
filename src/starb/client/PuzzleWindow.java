@@ -1,6 +1,8 @@
 package starb.client;
 
 import javax.swing.*;
+
+
 import java.awt.*;
 
 public class PuzzleWindow extends JFrame{
@@ -14,9 +16,11 @@ public class PuzzleWindow extends JFrame{
         titlePanel.add( new JLabel("Puzzle Drawing") );
 
         graphicsPanel = new PuzzleDrawingPanel();
+       
 
         this.add(graphicsPanel, BorderLayout.CENTER);
         this.add(titlePanel, BorderLayout.NORTH);
         this.pack();
     }
+
 }
