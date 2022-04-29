@@ -21,4 +21,13 @@ public class Coordinate {
     public String toString() {
         return x + "," + y;
     }
+
+    public boolean equals(Coordinate compareTo) {
+        if (this.getX() == compareTo.getX() && this.getY() == compareTo.getY()) {
+            return true;
+        }
+        return false;
+    }
 }
+
+
