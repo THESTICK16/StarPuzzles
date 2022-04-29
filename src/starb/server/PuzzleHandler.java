@@ -14,6 +14,8 @@ public class PuzzleHandler implements HttpHandler{
         URI uri = exchange.getRequestURI();
         String p = uri.getPath();
 
+        //Get PuzzleADT
+        
         String response = "Hello from PuzzleHandler";
 
         Headers responseHeaders = exchange.getResponseHeaders();

@@ -1,4 +1,4 @@
-package starb.client;
+package starb.server;
 
 public class PuzzleAdt{
 
