@@ -7,20 +7,11 @@ public class PuzzleAdt {
     private int[][] board;
     private int numStars;
     private ArrayList<Coordinate> solution;
-    private Parser p = new Parser();
 
-    public PuzzleAdt(){}
-
-    public PuzzleAdt(String boardRepresentation){
-        board = p.getBoard(boardRepresentation);
-        numStars = p.getNumStars(boardRepresentation);
-        solution = p.getSolution(boardRepresentation);
-    }
-
-    public void initializePuzzle(String boardRepresentation) {
-        board = p.getBoard(boardRepresentation);
-        numStars = p.getNumStars(boardRepresentation);
-        solution = p.getSolution(boardRepresentation);
+    public PuzzleAdt(int[][] board, int numStars, ArrayList<Coordinate> solution){
+        this.board = board;
+        this.numStars = numStars;
+        this.solution = solution;
     }
 
     public int[][] getBoard() {
