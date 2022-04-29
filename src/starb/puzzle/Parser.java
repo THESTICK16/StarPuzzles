@@ -1,11 +1,8 @@
 package starb.puzzle;
 
-import com.sun.source.tree.Tree;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.TreeMap;
 
 public class Parser {
 
@@ -108,15 +105,15 @@ public class Parser {
     }
 
     public PuzzleAdt stringToBoard(String boardString){
-        PuzzleAdt p = new PuzzleAdt(boardString);
+        int[][] board = getBoard(boardString);
+        int numStars = getNumStars(boardString);
+        ArrayList<Coordinate> c = getSolution(boardString);
+
+        PuzzleAdt p = new PuzzleAdt(board,numStars,c);
         return p;
     }
 
-
-
-
     public int getNumStars(String boardString){
-
         return Integer.parseInt(boardString.split("\n\n")[0].split(" ")[1]);
     }
 
