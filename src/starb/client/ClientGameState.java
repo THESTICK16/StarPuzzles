@@ -1,6 +1,6 @@
 package starb.client;
 
-import starb.Parser;
+import starb.puzzle.Parser;
 
 import java.util.Arrays;
 

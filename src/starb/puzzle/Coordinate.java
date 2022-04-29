@@ -1,4 +1,4 @@
-package starb;
+package starb.puzzle;
 
 public class Coordinate {
 
@@ -19,6 +19,6 @@ public class Coordinate {
     }
 
     public String toString() {
-        return "(" + x + "," + y + ")";
+        return x + "," + y;
     }
 }

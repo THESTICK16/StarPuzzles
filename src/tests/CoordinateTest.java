@@ -1,7 +1,7 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-import starb.Coordinate;
+import starb.puzzle.Coordinate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
