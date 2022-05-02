@@ -1,8 +1,12 @@
 package starb.client;
 
+import starb.puzzle.Coordinate;
 import starb.puzzle.Parser;
+import starb.puzzle.PuzzleAdt;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * A client end representation of the game state
@@ -26,7 +30,13 @@ public class ClientGameState {
      * A representation of the solved puzzle
      * to be checked against the current game state to determine if the puzzle has been solved
      */
-    private char[][] victoryConditions;
+//    private char[][] victoryConditions;
+    private List<Coordinate> victoryConditions;
+
+    /**
+     * A list containing the coordinates of the solved puzzle
+     */
+    private List<Coordinate> placedStars;
 
     /**
      * The size of the square board
@@ -34,7 +44,9 @@ public class ClientGameState {
      */
     private int boardSize;
 
-    private Parser parser;
+    private Parser parser = new Parser();
+
+    private PuzzleAdt puzzleAdt;
 
     /**
      * constants that contain the values that can be represented in 'game'
@@ -45,30 +57,19 @@ public class ClientGameState {
 
 
 
-    /**
-     * The game state of the star puzzle
-     */
-    public ClientGameState() {
-        parser = new Parser();
-//        game = parser. FIXME what method to call to get the game state as an array
-    }
-
-    /**
+     /**
      * The game state of the star puzzle
      * @param puzzleFilePath a text representation of the file containg the data for the Puzzle
      */
     public ClientGameState(String puzzleFilePath) {
-        parser = new Parser(puzzleFilePath);
-//        game = parser. FIXME what method to call to get the game state as an array
+//        parser = new Parser();
+        String gameString = parser.puzzleFileToString(puzzleFilePath);
+        puzzleAdt = parser.stringToBoard(gameString);
+        victoryConditions = puzzleAdt.getSolution();
     }
 
-/*
-    public ClientGameState(String boardFilePath, int boardSize) {
-        game = new char[boardSize][boardSize];
-        this.boardSize = boardSize;
-        loadBoard(boardFilePath);
-    }
- */
+
+
 
     /**
      * Alters the game state representation to represent an action taken by the player at the indicated location
@@ -84,7 +85,11 @@ public class ClientGameState {
         }
 
         game[locationX][locationY] = action;
-        checkVictory(game);
+
+        if (action == STAR) {
+            placedStars.add(new Coordinate(locationX, locationY));
+        }
+        checkVictory();
 
         return true;
     }
@@ -111,15 +116,48 @@ public class ClientGameState {
 
     /**
      * Checks to see if the current state of the board meets the victory conditions
-     * @param board the game state to check for victory conditions
      * @return true if puzzle is solved, else false
      */
-    public boolean checkVictory(char[][] board) {
-        if (Arrays.equals(board, victoryConditions)) {
-            return true;
+    public boolean checkVictory() {
+        if (placedStars.size() != victoryConditions.size()) {
+            return false;
         }
 
-        return false;
+        for (Coordinate star : placedStars) {
+            boolean inSolution = false;
+
+            for (Coordinate answerStar: victoryConditions) {
+                if (star.equals(answerStar)) {
+                    inSolution = true;
+                }
+            }
+
+            if (!inSolution) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean checkVictory(List<Coordinate> placedStars, List<Coordinate> victoryConditions) {
+        if (placedStars.size() != victoryConditions.size()) {
+            return false;
+        }
+
+        for (Coordinate star : placedStars) {
+            boolean inSolution = false;
+
+            for (Coordinate answerStar: victoryConditions) {
+                if (star.equals(answerStar)) {
+                    inSolution = true;
+                }
+            }
+
+            if (!inSolution) {
+                return false;
+            }
+        }
+        return true;
     }
 
 

@@ -1,11 +1,8 @@
 package starb.puzzle;
 
-import com.sun.source.tree.Tree;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.TreeMap;
 
 public class Parser {
 
@@ -66,7 +63,6 @@ public class Parser {
         // Pulling Solution
         finalString.append(line[line.length-1]);
 
-
         return finalString.toString();
     }
 
@@ -108,19 +104,19 @@ public class Parser {
     }
 
     public PuzzleAdt stringToBoard(String boardString){
-        PuzzleAdt p = new PuzzleAdt(boardString);
+        int[][] board = getBoard(boardString);
+        int numStars = getNumStars(boardString);
+        ArrayList<Coordinate> c = getSolution(boardString);
+
+        PuzzleAdt p = new PuzzleAdt(board,numStars,c);
         return p;
     }
 
-
-
-
-    public int getNumStars(String boardString){
-
+    private int getNumStars(String boardString){
         return Integer.parseInt(boardString.split("\n\n")[0].split(" ")[1]);
     }
 
-    public int[][] getBoard(String boardString){
+    private int[][] getBoard(String boardString){
         String[] board = boardString.split("\n\n")[1].split("\n");
         int[][] b = new int[board.length][board.length];
 
@@ -133,7 +129,7 @@ public class Parser {
         return b;
     }
 
-    public ArrayList<Coordinate> getSolution(String boardString){
+    private ArrayList<Coordinate> getSolution(String boardString){
         String[] solution = boardString.split("\n\n")[2].split(" ");
         ArrayList<Coordinate> l = new ArrayList<>();
         for(int i = 0; i < solution.length; i++){

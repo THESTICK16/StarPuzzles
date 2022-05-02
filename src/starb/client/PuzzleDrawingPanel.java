@@ -32,8 +32,6 @@ public class PuzzleDrawingPanel extends JComponent{
         for(int i = 0; i < cols + 1; i++){
             g.drawLine(originX + (i * cellSide), originY, originX+(i * cellSide), originY + (rows * cellSide));
         }
-       
-
         
     }
 

@@ -4,7 +4,11 @@ import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-import starb.Parser;
+import starb.puzzle.Parser;
+<<<<<<< HEAD
+import starb.puzzle.PuzzleAdt;
+=======
+>>>>>>> 906a4c6b97cdc14c2bc40278bb38f4ed9810f6da
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -15,16 +19,19 @@ public class PuzzleHandler implements HttpHandler{
     public void handle(HttpExchange exchange) throws IOException {
         URI uri = exchange.getRequestURI();
         String p = uri.getPath();
-        String fileName = p.substring(p.lastIndexOf('/') + 1);
+        String fileName = p;
 
-        Parser parse = new Parser(fileName);
-        String p1 = parse.getData().toString();
+<<<<<<< HEAD
+        Parser parse = new Parser();
+        String p1 = parse.toString();// getData().toString(); FIXME update to new parser methods
+=======
+        starb.puzzle.Parser parse = new Parser();
+>>>>>>> 906a4c6b97cdc14c2bc40278bb38f4ed9810f6da
 
-        //Get PuzzleADT
-        PuzzleAdt puzzle = new PuzzleAdt();
+        String p1 = parse.puzzleFileToString(fileName);
 
         //send string version of puzzle
-        String response = p1; 
+        String response = p1;
 
         Headers responseHeaders = exchange.getResponseHeaders();
         responseHeaders.add("Content-Type", "text/plain");
