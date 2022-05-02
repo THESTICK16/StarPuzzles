@@ -18,7 +18,7 @@ public class PuzzleDrawingPanel extends JComponent{
 
     public PuzzleDrawingPanel() {
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        this.addMouseListener( new DrawPanelMouseListener() );
+        this.addMouseListener( new DrawPanelMouseListener() ); //this would be new ClientInteraction object and you would re override the bottom method
     }
 
     @Override
@@ -39,8 +39,10 @@ public class PuzzleDrawingPanel extends JComponent{
 
     private static class DrawPanelMouseListener extends MouseAdapter {
         @Override
-        public void mouseClicked(MouseEvent e) {
+        public void mouseClicked(MouseEvent e)
+        {
             System.out.printf("Click: (%d, %d)\n", e.getX(), e.getY());
         }
     }
 }
+//call client interaction from this existing handler, or ^^
