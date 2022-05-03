@@ -6,13 +6,9 @@ public class ClientInteraction
 {
 
     /*
-    * Determines what cell the mouse click is in.
-    * @Param: x cord, y cord,
-    * I am thinking of I get the location of the mouse click, example(x coordinate 40, y coordinate 60),
-    * then I divide it by 10, each of them, and if it falls between a certain index, that is the grid they
-    * are in. so 40/10, and 60/10, they are in location 4 grid over, 6 grid down.
+    *
     */
-    public int whatGrid(int x, int y)
+    public int cellLength(int x, int y)
     {
         //write code here that does the math, and when you call it from the puzzle drawing panel it will
         //have the location automatically.
@@ -23,7 +19,7 @@ public class ClientInteraction
         int xDim = 550/10; //width of board divided by how many grids gives cell length by pix.
         int yDim = 550/10; //height of board divided by how many grids
 
-        //xxcoord of mouse click / the length of the cell which will give u what grid youre in.
+        //xcord of mouse click / the length of the cell which will give u what grid youre in.
 
         return 0;
     }
