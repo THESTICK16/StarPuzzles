@@ -16,10 +16,15 @@ public class PuzzleHandler implements HttpHandler{
     public void handle(HttpExchange exchange) throws IOException {
         URI uri = exchange.getRequestURI();
         String p = uri.getPath();
-        String fileName = p.substring(1);
+        String fileName = p;
 
         Parser parse = new Parser();
+<<<<<<< HEAD
         //String p1 = parse.toString();// getData().toString(); FIXME update to new parser methods
+=======
+        String p1 = parse.toString();// getData().toString(); FIXME update to new parser methods
+        starb.puzzle.Parser parse = new Parser();
+>>>>>>> refs/remotes/origin/main
 
         String p1 = parse.puzzleFileToString(fileName);
 
