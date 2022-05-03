@@ -25,6 +25,7 @@ public class PuzzleWindow extends JFrame{
 
     public void puzzleRepaint(){
         graphicsPanel.repaint();
+        //test comment
     }
 
 }
