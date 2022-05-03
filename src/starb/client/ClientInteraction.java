@@ -20,10 +20,10 @@ public class ClientInteraction
         //getHeight / pixels
 
         //Dimensions of the board.
-        int xDim = 550/10; //width of board divided by how many grids
+        int xDim = 550/10; //width of board divided by how many grids gives cell length by pix.
         int yDim = 550/10; //height of board divided by how many grids
 
-        //you want to divide that mouse location by the dim.
+        //xxcoord of mouse click / the length of the cell which will give u what grid youre in.
 
         return 0;
     }
