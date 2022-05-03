@@ -18,23 +18,6 @@ public class StarbClient {
             screen.setVisible(true);
         } );
 
-        //create the client
-        HttpClient client = HttpClient.newHttpClient();
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8000"))
-                .header("Content-Type", "text/plain")
-                .GET()
-                .build();
-
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        //response is puzzle in string format
-
-
-        //create board with sections
-        //repaint 
-        screen.puzzleRepaint();
-
    
     }
     

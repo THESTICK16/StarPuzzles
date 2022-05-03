@@ -19,7 +19,7 @@ public class PuzzleHandler implements HttpHandler{
         String fileName = p.substring(1);
 
         Parser parse = new Parser();
-        String p1 = parse.toString();// getData().toString(); FIXME update to new parser methods
+        //String p1 = parse.toString();// getData().toString(); FIXME update to new parser methods
 
         String p1 = parse.puzzleFileToString(fileName);
 
