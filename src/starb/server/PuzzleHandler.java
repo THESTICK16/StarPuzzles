@@ -15,7 +15,7 @@ public class PuzzleHandler implements HttpHandler{
     public void handle(HttpExchange exchange) throws IOException {
         URI uri = exchange.getRequestURI();
         String p = uri.getPath();
-        String fileName = p;
+        String fileName = p.substring(1);
 
         starb.puzzle.Parser parse = new Parser();
 
