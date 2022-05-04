@@ -8,6 +8,10 @@ public class Parser {
 
     public Parser(){}
 
+    /**
+     * @param fileName filepath of the puzzle file
+     * @return string representation of the puzzle
+     */
     public String puzzleFileToString(String fileName){
         StringBuilder finalString = new StringBuilder();
         StringBuilder sb = new StringBuilder();
@@ -66,6 +70,10 @@ public class Parser {
         return finalString.toString();
     }
 
+    /**
+     * @param p Puzzle Adt object
+     * @return string representation of the puzzle
+     */
     public String boardToString(PuzzleAdt p){
         int[][] board = p.getBoard();
         ArrayList<Coordinate> solution = p.getSolution();
@@ -103,6 +111,10 @@ public class Parser {
         return sb.toString();
     }
 
+    /**
+     * @param boardString string representation of the board
+     * @return puzzle adt object
+     */
     public PuzzleAdt stringToBoard(String boardString){
         int[][] board = getBoard(boardString);
         int numStars = getNumStars(boardString);
@@ -112,10 +124,18 @@ public class Parser {
         return p;
     }
 
+    /**
+     * @param boardString string representation of the board
+     * @return numStars that the board requires in each grid
+     */
     private int getNumStars(String boardString){
         return Integer.parseInt(boardString.split("\n\n")[0].split(" ")[1]);
     }
 
+    /**
+     * @param boardString string representation of the board
+     * @return 2d array of the board
+     */
     private int[][] getBoard(String boardString){
         String[] board = boardString.split("\n\n")[1].split("\n");
         int[][] b = new int[board.length][board.length];
@@ -129,6 +149,10 @@ public class Parser {
         return b;
     }
 
+    /**
+     * @param boardString string representation of the board
+     * @return Arraylist<Coordinate> object with all the correct star locations
+     */
     private ArrayList<Coordinate> getSolution(String boardString){
         String[] solution = boardString.split("\n\n")[2].split(" ");
         ArrayList<Coordinate> l = new ArrayList<>();

@@ -1,8 +1,11 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import starb.puzzle.Coordinate;
 import starb.puzzle.Parser;
 import starb.puzzle.PuzzleAdt;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,48 +39,20 @@ class ParserTest {
     }
 
     @Test
+    void stringToBoardSolution() {
+        PuzzleAdt result = p.stringToBoard(boardRep);
+
+        ArrayList<Coordinate> resultSolution = result.getSolution();
+
+        assertEquals("[0,1, 0,4, 1,6, 1,8, 2,1, 2,3, 3,7, 3,9, 4,3, 4,5, 5,0, 5,7, 6,2, 6,4, 7,6, 7,8, 8,0, 8,2, 9,5, 9,9]",resultSolution.toString());
+    }
+
+    @Test
     void boardToString() {
-        PuzzleAdt puzzle = new PuzzleAdt();
-        puzzle.initializePuzzle(boardRep);
+        PuzzleAdt result = p.stringToBoard(boardRep);
+        String resultString = p.boardToString(result);
 
-        String result = p.boardToString(puzzle);
-
-        String expected = boardRep;
-
-        assertEquals(expected, result);
+        assertEquals(boardRep, resultString);
     }
 
-    @Test
-    void stringToBoard() {
-        PuzzleAdt puzzle = new PuzzleAdt();
-
-        assertNotEquals(puzzle, p.stringToBoard(boardRep));
-    }
-
-    //TODO add test to check for board similarity in string to board conversion
-
-    @Test
-    void getNumStars() {
-        assertEquals(2, p.getNumStars(boardRep));
-    }
-
-    //TODO add test for getSolution and getBoard (Methods working just not tested)
-
-    @Test
-    void getSolution(){
-        System.out.println(p.getSolution(boardRep));
-    }
-
-    @Test
-    void getBoard() {
-        int[][] boardTest = p.getBoard(boardRep);
-
-        for(int i = 0; i < boardTest.length; i++){
-            for(int j = 0; j < boardTest.length; j++){
-                System.out.print(boardTest[i][j] + " ");
-            }
-            System.out.println();
-        }
-
-    }
 }

@@ -18,13 +18,8 @@ public class PuzzleHandler implements HttpHandler{
         String p = uri.getPath();
         String fileName = p;
 
-        Parser parse = new Parser();
-<<<<<<< HEAD
-        //String p1 = parse.toString();// getData().toString(); FIXME update to new parser methods
-=======
-        String p1 = parse.toString();// getData().toString(); FIXME update to new parser methods
         starb.puzzle.Parser parse = new Parser();
->>>>>>> refs/remotes/origin/main
+
 
         String p1 = parse.puzzleFileToString(fileName);
 

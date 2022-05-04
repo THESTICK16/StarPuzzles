@@ -11,7 +11,7 @@ class CoordinateTest {
 
     @org.junit.jupiter.api.Test
     void testToString() {
-        assertEquals("(1,2)", c.toString());
+        assertEquals("1,2", c.toString());
     }
 
     @Test
