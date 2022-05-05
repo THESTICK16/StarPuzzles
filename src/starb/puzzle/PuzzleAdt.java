@@ -15,6 +15,7 @@ public class PuzzleAdt {
     }
 
     /**
+     * Note: to get board dimension, call getBoard()
      * @return 2d array of the current board
      */
     public int[][] getBoard() {
