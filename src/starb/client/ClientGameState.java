@@ -84,6 +84,8 @@ public class ClientGameState {
             return false;
         }
 
+        //TODO add a check to see if a star is being removed and remove it from the placedStars ArrayList
+
         game[locationX][locationY] = action;
 
         if (action == STAR) {
