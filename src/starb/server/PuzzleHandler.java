@@ -21,11 +21,17 @@ public class PuzzleHandler implements HttpHandler{
         URI uri = exchange.getRequestURI();
         String path = uri.getPath();
         String fileName = path;
+        int responseCode = 200;
 
         Parser parse = new Parser();
         Random randPuz = new Random();
         int puzzleIndex = randPuz.nextInt(2);
-        String response = parse.puzzleFileToString(StarbServer.puzzleFileStrings[puzzleIndex]);//parse.toString();// getData().toString(); FIXME update to new parser methods
+        String response = parse.puzzleFileToString(StarbServer.puzzleFileStrings[puzzleIndex]);
+
+        if (response == null || response.length() <= 0) {
+            responseCode = 404;
+            response = "Error 404: File not found :(\n";
+        }
 //        parse = new Parser();
 //        String p1 = parse.puzzleFileToString(fileName);
 //
@@ -35,7 +41,7 @@ public class PuzzleHandler implements HttpHandler{
         Headers responseHeaders = exchange.getResponseHeaders();
         responseHeaders.add("Content-Type", "text/plain");
 
-        exchange.sendResponseHeaders(200, response.length());
+        exchange.sendResponseHeaders(responseCode, response.length());
         OutputStream os = exchange.getResponseBody();
         os.write(response.getBytes());
         os.close();
