@@ -1,46 +1,88 @@
 package tests;
 
+import org.junit.jupiter.api.Test;
 import starb.client.ClientGameState;
 import starb.puzzle.Coordinate;
+import starb.puzzle.Parser;
 
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
 public class ClientGameStateTest {
-    ClientGameState cgs;
-    char[][] testGame;
 
-    @org.junit.Before
-    public void setUp() throws Exception {
-        cgs = new ClientGameState("puzzles/puzzle-1-1-1.txt");
-        testGame = new char[10][10];
+    Parser p = new Parser();
+    String puzzle1 = p.puzzleFileToString("puzzles/puzzle-1-1-1.txt");
+
+    ClientGameState g = new ClientGameState(puzzle1);
+
+    @Test
+    void getSquare1() {
+        assertEquals(' ',g.getSquare(0,0));
     }
 
-    @org.junit.Test
-    public void alterBoard() {
+    @Test // This same code is in all the set and get methods involving a single square
+    void getSquareWrongDimension() {
+        assertThrows(IllegalArgumentException.class,() ->{g.getSquare(1000,1000);});
     }
 
-    @org.junit.Test
-    public void testToString() {
+    @Test
+    void setStar() {
+        g.setStar(0,0);
+        assertEquals('*', g.getSquare(0,0));
     }
 
-    @org.junit.Test
-    public void checkVictory() {
-        ArrayList<Coordinate> tS = new ArrayList<>();
-        ArrayList<Coordinate> tP = new ArrayList<>();
-        tS.add(new Coordinate(3, 4));
-        tS.add(new Coordinate(2, 2));
-        tS.add(new Coordinate(1, 5));
-        tP.add(new Coordinate(2, 2));
-        tP.add(new Coordinate(1, 5));
-        tP.add(new Coordinate(3, 4));
-        assertTrue(cgs.checkVictory(tP, tS));
-        tP.add(new Coordinate(7, 0));
-        assertFalse(cgs.checkVictory(tP, tS));
-        tS.add(new Coordinate(7, 0));
-        assertTrue(cgs.checkVictory(tP, tS));
-        tS.add(new Coordinate(1, 1));
-        assertFalse(cgs.checkVictory(tP, tS));
+    @Test
+    void setPoint() {
+        g.setPoint(0,0);
+        assertEquals('.', g.getSquare(0,0));
+    }
+
+    @Test
+    void setSpace() {
+        g.setSpace(0,0);
+        assertEquals(' ', g.getSquare(0,0));
+    }
+
+    @Test
+    void getBoard() {
+    }
+
+    @Test
+    void getGameState() {
+    }
+
+    @Test
+    void checkWin() {
+        ArrayList<Coordinate> solution = p.stringToBoard(puzzle1).getSolution();
+
+        for(int i = 0; i < solution.size(); i++){
+            g.setStar(solution.get(i).getX(), solution.get(i).getY());
+        }
+        assertTrue(g.checkWin());
+    }
+
+    @Test
+    void checkWinFalseSize() {
+        ArrayList<Coordinate> solution = p.stringToBoard(puzzle1).getSolution();
+
+        for(int i = 0; i < solution.size()-1; i++){
+            g.setStar(solution.get(i).getX(), solution.get(i).getY());
+        }
+
+        assertFalse(g.checkWin());
+    }
+
+    @Test
+    void checkWinFalseCoordinate() {
+        ArrayList<Coordinate> solution = p.stringToBoard(puzzle1).getSolution();
+
+        for(int i = 0; i < solution.size()-1; i++){
+            g.setStar(solution.get(i).getX(), solution.get(i).getY());
+        }
+
+        g.setStar(0,0);
+
+        assertFalse(g.checkWin());
     }
 }

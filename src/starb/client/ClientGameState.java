@@ -5,80 +5,79 @@ import starb.puzzle.Parser;
 import starb.puzzle.PuzzleAdt;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-/**
- * A client end representation of the game state
- */
+
 public class ClientGameState {
 
-//    /**
-//     * The puzzle containing the game state
-//     */
-//    private PuzzleAdt game;
+    private char[][] gameState;
+    private PuzzleAdt puzzle;
+
+    // Representations on board
+    final static public char STAR = '*';
+    final static public char POINT = '.';
+    final static public char SPACE = ' ';
 
     /**
-     * the array containing the representation of the game state
-     * ' ' represents an empty square
-     * '.' represents a square that has been marked as unusable by the player
-     * '*' represents a star that has been placed by the player on that square
+     * Note: the puzzle file should be parsed via the server before being passed
+     * to this constructor. The constructor takes the string representation, not the
+     * filepath
+     * @param boardString String representation of the board to be represented
      */
-    private char[][] game;
+    public ClientGameState(String boardString){
+        Parser p = new Parser();
+        puzzle = p.stringToBoard(boardString);
+        gameState = new char[puzzle.getBoard().length][puzzle.getBoard().length];
 
-    /**
-     * A representation of the solved puzzle
-     * to be checked against the current game state to determine if the puzzle has been solved
-     */
-//    private char[][] victoryConditions;
-    private List<Coordinate> victoryConditions;
-
-    /**
-     * A list containing the coordinates of the solved puzzle
-     */
-    private List<Coordinate> placedStars;
-
-    /**
-     * The size of the square board
-     * measured in length/width, which are equal
-     */
-    private int boardSize;
-
-    private Parser parser = new Parser();
-
-    private PuzzleAdt puzzleAdt;
-
-    /**
-     * constants that contain the values that can be represented in 'game'
-     */
-    static final char STAR = '*';
-    static final char SPACE = ' ';
-    static final char CIRCLE = '.';
-
-
-
-     /**
-     * The game state of the star puzzle
-     * @param puzzleFilePath a text representation of the file containg the data for the Puzzle
-     */
-    public ClientGameState(String puzzleFilePath) {
-//        parser = new Parser();
-        String gameString = parser.puzzleFileToString(puzzleFilePath);
-        puzzleAdt = parser.stringToBoard(gameString);
-        victoryConditions = puzzleAdt.getSolution();
+        // Initialize gameBoard with all spaces
+        for(int i = 0; i < gameState.length; i++){
+            for(int j = 0; j < gameState[0].length; j++){
+                gameState[i][j] = SPACE;
+            }
+        }
     }
 
-
-
+    /**
+     * places a star at the given x,y coordinate
+     * @param x
+     * @param y
+     */
+    public void setStar(int x, int y){
+        if(x < 0 || x > gameState.length || y < 0 || y > gameState.length){
+            throw new IllegalArgumentException();
+        }
+        gameState[x][y] = STAR;
+    }
 
     /**
-     * Alters the game state representation to represent an action taken by the player at the indicated location
-     * @param action the char that represents the intended state of the altered square, must be one of STAR, SPACE, or DOT
-     * @param locationX the x-coordinate at which the star will be added
-     * @param locationY the y-coordinate at which the star will be added
-     * @return true if the add was successful, false if the add was unsuccessful due to incompatible types
-     *      or trying to access an out-of-bounds index on the array
+     * places a star at the given x,y coordinate
+     * @param x
+     * @param y
      */
+    public void setPoint(int x, int y){
+        if(x < 0 || x > gameState.length || y < 0 || y > gameState.length){
+            throw new IllegalArgumentException();
+        }
+        gameState[x][y] = POINT;
+    }
+
+    /**
+     * places a star at the given x,y coordinate
+     * @param x
+     * @param y
+     */
+    public void setSpace(int x, int y){
+        if(x < 0 || x > gameState.length || y < 0 || y > gameState.length){
+            throw new IllegalArgumentException();
+        }
+        gameState[x][y] = SPACE;
+    }
+
+    /**
+     * @param x
+     * @param y
+     * @return the symbol at the given x,y coordinate
+     */
+<<<<<<< HEAD
     public boolean alterBoard(char action, int locationX, int locationY) {
         if ((action != STAR && action != SPACE && action != CIRCLE) || locationX >= boardSize || locationY >= boardSize || locationX < 0 || locationY < 0) {
             return false;
@@ -90,86 +89,68 @@ public class ClientGameState {
 
         if (action == STAR) {
             placedStars.add(new Coordinate(locationX, locationY));
+=======
+    public char getSquare(int x, int y){
+        if(x < 0 || x > gameState.length || y < 0 || y > gameState.length){
+            throw new IllegalArgumentException();
+>>>>>>> 9df1c5a4e83818bb491d70e8498a751a2cbd4361
         }
-        checkVictory();
-
-        return true;
-    }
-
-    public char[][] getGame() {
-        return game;
-    }
-
-    public String toString() {
-        StringBuilder s = new StringBuilder();
-        s.append("Game State:\n");
-
-        for (int i = 0; i < boardSize; i++) {
-            for (int j = 0; j < boardSize; j++) {
-                s.append(game[i][j] + " ");
-                if (j >= boardSize - 1) {
-                    s.append("\n");
-                }
-            }
-        }
-
-        return s.toString();
+        return gameState[x][y];
     }
 
     /**
-     * Checks to see if the current state of the board meets the victory conditions
-     * @return true if puzzle is solved, else false
+     * This is the function to call if you want to see what the current
+     * puzzle's cell locations are
+     * @return the int[][] array representation of the puzzleBoard
      */
-    public boolean checkVictory() {
-        if (placedStars.size() != victoryConditions.size()) {
+    public int[][] getBoard(){
+        return puzzle.getBoard();
+    }
+
+    /**
+     * This is the function to call if you want to see where the player
+     * has placed stars/points
+     * @return the char[][] array representation of the gameState
+     */
+    public char[][] getGameState(){
+        return gameState;
+    }
+
+    /**
+     * checks to see if the stars on the current board match the stars in the puzzle's given solution
+     * @return true if the stars match the solution, else false
+     */
+    public boolean checkWin(){
+        // Gets and stores all current stars in the game state
+        ArrayList<Coordinate> currStateStars = new ArrayList<>();
+
+        for(int i = 0; i < gameState.length; i++){
+            for(int j = 0; j < gameState[0].length; j++){
+                if(getSquare(i,j) == STAR){
+                    Coordinate c = new Coordinate(i,j);
+                    currStateStars.add(c);
+                }
+            }
+        }
+
+        // Checks to see if the solution and currState contain the same number of stars
+        if(currStateStars.size() != puzzle.getSolution().size()){
             return false;
         }
 
-        for (Coordinate star : placedStars) {
-            boolean inSolution = false;
 
-            for (Coordinate answerStar: victoryConditions) {
-                if (star.equals(answerStar)) {
+        // Checks to see if all stars in currState are in the solution
+        for(int i = 0; i < currStateStars.size(); i++){
+            boolean inSolution = false;
+            for(int j = 0; j < puzzle.getSolution().size(); j++){
+                if(currStateStars.get(i).compareCoord(puzzle.getSolution().get(j))){
                     inSolution = true;
                 }
             }
-
-            if (!inSolution) {
+            if(!inSolution){
                 return false;
             }
         }
         return true;
     }
-
-    public boolean checkVictory(List<Coordinate> placedStars, List<Coordinate> victoryConditions) {
-        if (placedStars.size() != victoryConditions.size()) {
-            return false;
-        }
-
-        for (Coordinate star : placedStars) {
-            boolean inSolution = false;
-
-            for (Coordinate answerStar: victoryConditions) {
-                if (star.equals(answerStar)) {
-                    inSolution = true;
-                }
-            }
-
-            if (!inSolution) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-
-//    /**
-//     * Sets up the game representation to reflect the initial game state given by the file found at boardFilePath
-//     * Called only once from the constructor
-//     * @param boardFilePath the name of the file containing the data for the initial state of the desired board
-//     * @return true if board is loaded successfully, false if failed
-//     */
-//    public boolean loadBoard(String boardFilePath) {
-//        return false;
-//    }
 }

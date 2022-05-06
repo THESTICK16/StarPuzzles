@@ -22,12 +22,17 @@ public class Coordinate {
         return x + "," + y;
     }
 
-    public boolean equals(Coordinate compareTo) {
-        if (this.getX() == compareTo.getX() && this.getY() == compareTo.getY()) {
+    /**
+     * @param c coordinate to compare
+     * @return true if the coordinates are the same
+     */
+    public boolean compareCoord(Coordinate c) {
+        if (this.x == c.getX() && this.y == c.getY()) {
             return true;
         }
         return false;
     }
+
 }
 
 

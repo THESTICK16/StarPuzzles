@@ -14,16 +14,28 @@ public class PuzzleAdt {
         this.solution = solution;
     }
 
+    /**
+     * Note: to get board dimension, call getBoard()
+     * @return 2d array of the current board
+     */
     public int[][] getBoard() {
         return board;
     }
 
+    /**
+     * @return numStars for victory condition for a given puzzle
+     */
     public int getNumStars() {
         return numStars;
     }
 
+    /**
+     * @return Arraylist<Coordinate> of the solution star locations
+     */
     public ArrayList<Coordinate> getSolution() {
         return solution;
     }
+
+
 
 }

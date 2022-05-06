@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch StarbClient",
+            "request": "launch",
+            "mainClass": "starb.client.StarbClient",
+            "projectName": "390-2022s-starb-zaurac"
+        },
+        {
+            "type": "java",
+            "name": "Launch StarbServer",
+            "request": "launch",
+            "mainClass": "starb.server.StarbServer",
+            "projectName": "390-2022s-starb-zaurac"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Compound",
+            "configurations": ["Launch StarbServer", "Launch StarbClient"]
+        }
+    ]
+}
