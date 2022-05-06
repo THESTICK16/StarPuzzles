@@ -55,4 +55,16 @@ class ParserTest {
         assertEquals(boardRep, resultString);
     }
 
+    @Test
+    void fileToStringExample(){
+        String example = p.puzzleFileToString(boardRep);
+        System.out.println(example);
+    }
+
+    @Test
+    void stringToBoard(){
+        PuzzleAdt puzzle = p.stringToBoard(boardRep);
+        String puzzleString = p.boardToString(puzzle);
+        System.out.println(puzzleString);
+    }
 }
