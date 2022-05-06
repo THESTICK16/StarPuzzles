@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class PuzzleHandler implements HttpHandler{
 
@@ -22,12 +23,14 @@ public class PuzzleHandler implements HttpHandler{
         String fileName = path;
 
         Parser parse = new Parser();
-        String p1 = parse.toString();// getData().toString(); FIXME update to new parser methods
-        parse = new Parser();
-        String p1 = parse.puzzleFileToString(fileName);
-
-        //send string version of puzzle
-        String response = p1;
+        Random randPuz = new Random();
+        int puzzleIndex = randPuz.nextInt(2);
+        String response = parse.puzzleFileToString(StarbServer.puzzleFileStrings[puzzleIndex]);//parse.toString();// getData().toString(); FIXME update to new parser methods
+//        parse = new Parser();
+//        String p1 = parse.puzzleFileToString(fileName);
+//
+//        //send string version of puzzle
+//        String response = p1;
 
         Headers responseHeaders = exchange.getResponseHeaders();
         responseHeaders.add("Content-Type", "text/plain");
