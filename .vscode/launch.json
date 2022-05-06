@@ -15,14 +15,14 @@
             "name": "Launch StarbClient",
             "request": "launch",
             "mainClass": "starb.client.StarbClient",
-            "projectName": "390-2022s-starb-zaurac_18772999"
+            "projectName": "390-2022s-starb-zaurac"
         },
         {
             "type": "java",
             "name": "Launch StarbServer",
             "request": "launch",
             "mainClass": "starb.server.StarbServer",
-            "projectName": "390-2022s-starb-zaurac_18772999"
+            "projectName": "390-2022s-starb-zaurac"
         }
     ],
     "compounds": [
