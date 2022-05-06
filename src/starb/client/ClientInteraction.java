@@ -2,8 +2,13 @@ package starb.client;
 
 
 
-public class ClientInteraction
-{
+public class ClientInteraction {
+
+    private ClientGameState g;
+
+    public ClientInteraction(){
+
+    }
 
     /*
     *
@@ -27,20 +32,31 @@ public class ClientInteraction
     * Determines if the user adds a star to the grid or not based on mouse click.
     * @Param: grid location? call alterboard. gamestate.star or whatever
     */
-    public int addStar()
-    {
+    public void boardClick() {
+        /* TODO get coordinate x and y of board click in relation to grid coordinate
+        int x
+        int y
+        if(g.getSquare(x,y) == SPACE){
+            g.setStar(x,y)
+            draw g.getGameState()
+        }else if(g.getSquare(x,y) == STAR){
+            g.setPoint(x,y)
+            draw g.getGameState()
+        }else{
+            g.setSpace(x,y)
+            draw g.getGameState()
+        */
 
-
-        return 0;
     }
 
     /*
     * This will load a puzzle in. If the user mouse click on the button to load a puzzle in, this method
     * will send a request to the server to load a new puzzle in.
     */
-    public void loadPuzzle()
-    {
-
+    public void loadPuzzle() {
+        // String puzzleString = TODO Get puzzle from server
+        // g = new ClientGameState(puzzleString);
+        // draw g.getBoard() TODO draw method
     }
 
 }

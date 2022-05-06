@@ -13,9 +13,9 @@ public class ClientGameState {
     private PuzzleAdt puzzle;
 
     // Representations on board
-    final private char STAR = '*';
-    final private char POINT = '.';
-    final private char SPACE = ' ';
+    final static public char STAR = '*';
+    final static public char POINT = '.';
+    final static public char SPACE = ' ';
 
     /**
      * Note: the puzzle file should be parsed via the server before being passed
