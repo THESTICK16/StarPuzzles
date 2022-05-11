@@ -16,7 +16,7 @@ public class PuzzleDrawingPanel extends JComponent{
     static final int originY = 0;
     static final int cellSide = 50;
 
-    
+    ClientInteraction c = new ClientInteraction();
 
     public PuzzleDrawingPanel() {
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -26,6 +26,10 @@ public class PuzzleDrawingPanel extends JComponent{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        paintBoard(g);
+    }
+
+    private void paintBoard(Graphics g){
         Graphics2D g2d = (Graphics2D) g.create();
         PuzzleADTClient p = new PuzzleADTClient();
 
@@ -81,7 +85,22 @@ public class PuzzleDrawingPanel extends JComponent{
             x+=cellSide;
             y = originY;
         }
+    }
 
+    private void paintState(Graphics g){
+
+    }
+
+    private void paintStar(Graphics g, int x, int y, int w){
+        g.drawRect(x,y,w,w);
+    }
+
+    private void paintPoint(Graphics g, int x, int y, int w){
+        g.fillOval(x,y,w,w);
+    }
+
+    public void loadPuzzle(){
+        c.loadPuzzle();
     }
 
 

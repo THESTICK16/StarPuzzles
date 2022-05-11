@@ -30,10 +30,7 @@ public class PuzzleWindow extends JFrame{
         startButton.add(start);
 
         graphicsPanel = new PuzzleDrawingPanel();
-        
-        
 
-        
         this.add(titlePanel, BorderLayout.NORTH);
         this.add(startButton, BorderLayout.SOUTH);
         this.add(graphicsPanel, BorderLayout.CENTER);
