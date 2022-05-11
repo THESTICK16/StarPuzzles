@@ -109,12 +109,4 @@ public class PuzzleADTClient {
         return result[index];
     }
 
-    public int getY(){
-        return this.y;
-    }
-
-    public void createSections(){
-        this.x = 8;
-        this.y = 3;
-    }
 }

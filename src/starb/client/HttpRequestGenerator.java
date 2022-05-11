@@ -31,6 +31,6 @@ public class HttpRequestGenerator {
         System.out.println("Response status: " + response.statusCode());
         System.out.println("Response body: " + response.body());
 
-        return response.toString();
+        return response.body();
     }
 }

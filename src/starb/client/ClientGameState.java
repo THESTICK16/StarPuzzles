@@ -72,6 +72,7 @@ public class ClientGameState {
         gameState[x][y] = SPACE;
     }
 
+<<<<<<< HEAD
 //    /**
 //     * @param x
 //     * @param y
@@ -90,6 +91,9 @@ public class ClientGameState {
 //            placedStars.add(new Coordinate(locationX, locationY));
 
     public char getSquare(int x, int y) {
+=======
+    public char getSquare(int x, int y){
+>>>>>>> 2a266f605f29f2e153508ee9ba91e8f80292436a
         if(x < 0 || x > gameState.length || y < 0 || y > gameState.length){
             throw new IllegalArgumentException();
         }

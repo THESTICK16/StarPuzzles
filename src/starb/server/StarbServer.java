@@ -33,7 +33,7 @@ public class StarbServer {
         System.out.println("Starting web server on port: " + PORT);
         server.start();
 
-
+/*
 //FIXME below is for testing purposes only!!!
         HttpRequestGenerator generator = new HttpRequestGenerator();
         try {
@@ -42,7 +42,7 @@ public class StarbServer {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
-        }
+        }*/
     }
 
 }
