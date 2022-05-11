@@ -2,6 +2,9 @@ package starb.client;
 
 import java.util.HashMap;
 
+import static starb.client.ClientGameState.SPACE;
+import static starb.client.ClientGameState.STAR;
+
 public class ClientInteraction {
 
     private ClientGameState g;
@@ -10,43 +13,22 @@ public class ClientInteraction {
 
     }
 
-    /*
-    *
-    */
-    public int cellLength(int x, int y)
-    {
-        //write code here that does the math, and when you call it from the puzzle drawing panel it will
-        //have the location automatically.
-        //getWidth
-        //getHeight / pixels
 
-        //Dimensions of the board.
-        int xDim = 550/10; //width of board divided by how many grids gives cell length by pix.
-        int yDim = 550/10; //height of board divided by how many grids
-
-        //xcord of mouse click / the length of the cell which will give u what grid youre in.
-
-        return 0;
-    }
     /*
     * Determines if the user adds a star to the grid or not based on mouse click.
     * @Param: grid location? call alterboard. gamestate.star or whatever
     */
-    public void boardClick() {
-        /* TODO get coordinate x and y of board click in relation to grid coordinate
-        int x
-        int y
-        if(g.getSquare(x,y) == SPACE){
-            g.setStar(x,y)
-            draw g.getGameState()
-        }else if(g.getSquare(x,y) == STAR){
-            g.setPoint(x,y)
-            draw g.getGameState()
-        }else{
-            g.setSpace(x,y)
-            draw g.getGameState()
-        */
+    public void boardClick(int x, int y) {
+        x = x/550/10;
+        y = y/550/10;
 
+        if(g.getSquare(x,y) == SPACE){
+            g.setStar(x,y);
+        }else if(g.getSquare(x,y) == STAR){
+            g.setPoint(x,y);
+        }else{
+            g.setSpace(x,y);
+        }
     }
 
     /*
@@ -55,8 +37,19 @@ public class ClientInteraction {
     */
     public void loadPuzzle() {
         // String puzzleString = TODO Get puzzle from server
-        // g = new ClientGameState(puzzleString);
-        // draw g.getBoard() TODO draw method
+
+        String puzzleString = "0,0,0,0,0,0,0,0,1,1\n"+
+                "0,0,0,0,0,0,4,0,1,1\n"+
+                "2,3,3,3,0,4,4,4,1,1\n"+
+                "2,2,2,2,5,6,6,4,1,1\n"+
+                "2,2,2,5,5,5,6,6,1,1\n"+
+                "2,2,7,5,5,5,6,6,1,1\n"+
+                "2,2,7,7,7,6,6,6,8,1\n"+
+                "2,2,2,2,2,2,6,6,8,1\n"+
+                "2,9,9,9,9,9,9,9,8,8\n"+
+                "9,9,9,9,9,9,9,9,9,8";
+
+        g = new ClientGameState(puzzleString);
     }
 
     public HashMap<Integer, boolean[]> getSectionRow(){
