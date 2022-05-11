@@ -38,7 +38,7 @@ public class ClientInteraction {
     public void loadPuzzle() {
         // String puzzleString = TODO Get puzzle from server
 
-        String puzzleString = "10 2 \n \n" +"0,0,0,0,0,0,0,0,1,1\n"+
+        String puzzleString = "10 2\n\n" +"0,0,0,0,0,0,0,0,1,1\n"+
                 "0,0,0,0,0,0,4,0,1,1\n"+
                 "2,3,3,3,0,4,4,4,1,1\n"+
                 "2,2,2,2,5,6,6,4,1,1\n"+
@@ -47,7 +47,7 @@ public class ClientInteraction {
                 "2,2,7,7,7,6,6,6,8,1\n"+
                 "2,2,2,2,2,2,6,6,8,1\n"+
                 "2,9,9,9,9,9,9,9,8,8\n"+
-                "9,9,9,9,9,9,9,9,9,8" + "\n\n ";
+                "9,9,9,9,9,9,9,9,9,8" + "\n\n0,1 0,4 1,6 1,8 2,1 2,3 3,7 3,9 4,3 4,5 5,0 5,7 6,2 6,4 7,6 7,8 8,0 8,2 9,5 9,9";
 
         g = new ClientGameState(puzzleString);
     }
@@ -91,25 +91,25 @@ public class ClientInteraction {
         HashMap<Integer, boolean[]> sectionsCol = new HashMap<>();
 
         //COLUMNS ARRAY
-        for(int j =0; j < grid.length ; j++){ //rows
-            boolean[] row1 = new boolean[10];
-            for(int k =0; k < grid.length ; k++){ //columns
-                int cur = grid[j][k];
+        for(int j =0; j < grid.length ; j++){ //columns
+            boolean[] col1 = new boolean[10];
+            for(int k =0; k < grid.length ; k++){ //rows
+                int cur = grid[k][j];
                 int next;
                 if(j==grid.length-1){
-                    next = grid[j][k];
-                }else{
-                    next = grid[j+1][k];
-                }
-                
-                if( cur != next){
-                    row1[k] = true;
+                    next = grid[k][j];
                 }
                 else{
-                    row1[k] = false;
+                    next = grid[k][j+1];
+                }
+                if( cur != next){
+                    col1[k] = true;
+                }
+                else{
+                    col1[k] = false;
                 }
             }
-            sectionsCol.put(j, row1);
+            sectionsCol.put(j, col1);
         }
 
         return sectionsCol;
