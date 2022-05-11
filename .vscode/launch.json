@@ -6,7 +6,7 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch StarbClient",
+            "name": "Launch StarbClient 2",
             "request": "launch",
             "mainClass": "starb.client.StarbClient",
             "projectName": "390-2022s-starb-zaurac_d17df7cb"

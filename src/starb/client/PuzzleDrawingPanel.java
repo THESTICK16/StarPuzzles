@@ -50,7 +50,7 @@ public class PuzzleDrawingPanel extends JComponent{
 
             for(int j = 0; j < rowsBold.size(); j++){
                 if(c.getBoldRows(i, j, rowsBold)){
-                    g2d.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+                    g2d.setStroke(new BasicStroke(4, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                     g2d.drawLine(x, y + cellSide, x+ cellSide, y + cellSide );
                     x += cellSide;
                 }
@@ -73,7 +73,7 @@ public class PuzzleDrawingPanel extends JComponent{
 
             for(int j = 0; j < colsBold.size(); j++){
                 if(c.getBoldCols(i, j, colsBold)){
-                    g2d.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+                    g2d.setStroke(new BasicStroke(4, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                     g2d.drawLine(x + cellSide, y, x+ cellSide, y + cellSide );
                     y += cellSide;
                 }
