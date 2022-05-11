@@ -1,6 +1,6 @@
 package starb.client;
 
-
+import java.util.HashMap;
 
 public class ClientInteraction {
 
@@ -57,6 +57,85 @@ public class ClientInteraction {
         // String puzzleString = TODO Get puzzle from server
         // g = new ClientGameState(puzzleString);
         // draw g.getBoard() TODO draw method
+    }
+
+    public HashMap<Integer, boolean[]> getSectionRow(){
+        //get intial client game state for sections
+        int[][] grid = g.getBoard();
+
+        HashMap<Integer, boolean[]> sectionsRow = new HashMap<>();
+
+        //ROWS ARRAY
+        for(int j =0; j < grid.length ; j++){ //rows
+            boolean[] row1 = new boolean[10];
+            for(int k =0; k < grid.length ; k++){ //columns
+                int cur = grid[j][k];
+                int next;
+                if(j==grid.length-1){
+                    next = grid[j][k];
+                }else{
+                    next = grid[j+1][k];
+                }
+                
+                if( cur != next){
+                    row1[k] = true;
+                }
+                else{
+                    row1[k] = false;
+                }
+            }
+            sectionsRow.put(j, row1);
+        }
+
+        return sectionsRow;
+
+    }
+
+    public HashMap<Integer, boolean[]> getSectionCol(){
+        //get intial client game state for sections
+        int[][] grid = g.getBoard();
+
+        HashMap<Integer, boolean[]> sectionsCol = new HashMap<>();
+
+        //COLUMNS ARRAY
+        for(int j =0; j < grid.length ; j++){ //rows
+            boolean[] row1 = new boolean[10];
+            for(int k =0; k < grid.length ; k++){ //columns
+                int cur = grid[j][k];
+                int next;
+                if(j==grid.length-1){
+                    next = grid[j][k];
+                }else{
+                    next = grid[j+1][k];
+                }
+                
+                if( cur != next){
+                    row1[k] = true;
+                }
+                else{
+                    row1[k] = false;
+                }
+            }
+            sectionsCol.put(j, row1);
+        }
+
+        return sectionsCol;
+
+    }
+
+    public int size( HashMap<Integer, boolean[]> dim){
+        int size = dim.size();
+        return size;
+    }
+
+    public boolean getBoldRows(int row, int index, HashMap<Integer, boolean[]> rowsMap){
+        boolean[] result = rowsMap.get(row);
+        return result[index];
+    }
+
+    public boolean getBoldCols(int col, int index, HashMap<Integer, boolean[]> colMap){
+        boolean[] result = colMap.get(col);
+        return result[index];
     }
 
 }
