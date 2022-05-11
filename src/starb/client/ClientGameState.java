@@ -72,28 +72,26 @@ public class ClientGameState {
         gameState[x][y] = SPACE;
     }
 
-    /**
-     * @param x
-     * @param y
-     * @return the symbol at the given x,y coordinate
-     */
-<<<<<<< HEAD
-    public boolean alterBoard(char action, int locationX, int locationY) {
-        if ((action != STAR && action != SPACE && action != CIRCLE) || locationX >= boardSize || locationY >= boardSize || locationX < 0 || locationY < 0) {
-            return false;
-        }
+//    /**
+//     * @param x
+//     * @param y
+//     * @return the symbol at the given x,y coordinate
+//     */
+//    public boolean alterBoard(char action, int locationX, int locationY) {
+//        if ((action != STAR && action != SPACE && action != CIRCLE) || locationX >= boardSize || locationY >= boardSize || locationX < 0 || locationY < 0) {
+//            return false;
+//        }
+//
+//        //TODO add a check to see if a star is being removed and remove it from the placedStars ArrayList
+//
+//        game[locationX][locationY] = action;
+//
+//        if (action == STAR) {
+//            placedStars.add(new Coordinate(locationX, locationY));
 
-        //TODO add a check to see if a star is being removed and remove it from the placedStars ArrayList
-
-        game[locationX][locationY] = action;
-
-        if (action == STAR) {
-            placedStars.add(new Coordinate(locationX, locationY));
-=======
-    public char getSquare(int x, int y){
+    public char getSquare(int x, int y) {
         if(x < 0 || x > gameState.length || y < 0 || y > gameState.length){
             throw new IllegalArgumentException();
->>>>>>> 9df1c5a4e83818bb491d70e8498a751a2cbd4361
         }
         return gameState[x][y];
     }

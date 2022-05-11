@@ -6,10 +6,6 @@ import com.sun.net.httpserver.HttpHandler;
 
 import starb.puzzle.Parser;
 import starb.puzzle.PuzzleAdt;
-<<<<<<< HEAD
-
-=======
->>>>>>> 9df1c5a4e83818bb491d70e8498a751a2cbd4361
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -26,10 +22,9 @@ public class PuzzleHandler implements HttpHandler{
         String fileName = path;
         int responseCode = 200;
 
-<<<<<<< HEAD
         Parser parse = new Parser();
         Random randPuz = new Random();
-        int puzzleIndex = randPuz.nextInt(2);
+        int puzzleIndex = randPuz.nextInt(StarbServer.puzzleFileStrings.length);
         String response = parse.puzzleFileToString(StarbServer.puzzleFileStrings[puzzleIndex]);
 
         if (response == null || response.length() <= 0) {
@@ -41,15 +36,13 @@ public class PuzzleHandler implements HttpHandler{
 //
 //        //send string version of puzzle
 //        String response = p1;
-=======
-        starb.puzzle.Parser parse = new Parser();
+//        starb.puzzle.Parser parse = new Parser();
 
 
         String p1 = parse.puzzleFileToString(fileName);
 
         //send string version of puzzle
-        String response = p1;
->>>>>>> 9df1c5a4e83818bb491d70e8498a751a2cbd4361
+//        String response = p1;
 
         Headers responseHeaders = exchange.getResponseHeaders();
         responseHeaders.add("Content-Type", "text/plain");
