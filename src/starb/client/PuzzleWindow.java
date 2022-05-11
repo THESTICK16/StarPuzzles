@@ -23,7 +23,7 @@ public class PuzzleWindow extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Start Button Clicked!!!!");
-                //graphicsPanel.loadPuzzle();
+                graphicsPanel.loadPuzzle();
             }
         });
 

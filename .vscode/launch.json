@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch StarbClient",
+            "request": "launch",
+            "mainClass": "starb.client.StarbClient",
+            "projectName": "390-2022s-starb-zaurac_d17df7cb"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"

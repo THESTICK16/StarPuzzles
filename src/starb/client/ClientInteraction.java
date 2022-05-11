@@ -38,7 +38,7 @@ public class ClientInteraction {
     public void loadPuzzle() {
         // String puzzleString = TODO Get puzzle from server
 
-        String puzzleString = "0,0,0,0,0,0,0,0,1,1\n"+
+        String puzzleString = "10 2 \n \n" +"0,0,0,0,0,0,0,0,1,1\n"+
                 "0,0,0,0,0,0,4,0,1,1\n"+
                 "2,3,3,3,0,4,4,4,1,1\n"+
                 "2,2,2,2,5,6,6,4,1,1\n"+
@@ -47,7 +47,7 @@ public class ClientInteraction {
                 "2,2,7,7,7,6,6,6,8,1\n"+
                 "2,2,2,2,2,2,6,6,8,1\n"+
                 "2,9,9,9,9,9,9,9,8,8\n"+
-                "9,9,9,9,9,9,9,9,9,8";
+                "9,9,9,9,9,9,9,9,9,8" + "\n\n ";
 
         g = new ClientGameState(puzzleString);
     }

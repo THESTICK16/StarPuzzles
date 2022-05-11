@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 
 public class PuzzleDrawingPanel extends JComponent{
     private static final int WIDTH = 500;
@@ -31,7 +32,8 @@ public class PuzzleDrawingPanel extends JComponent{
 
     private void paintBoard(Graphics g){
         Graphics2D g2d = (Graphics2D) g.create();
-        PuzzleADTClient p = new PuzzleADTClient();
+        HashMap<Integer, boolean[]> rowsBold = c.getSectionRow();
+        HashMap<Integer, boolean[]> colsBold = c.getSectionCol();
 
         int x = originX;
         int y = originY;
@@ -44,10 +46,10 @@ public class PuzzleDrawingPanel extends JComponent{
         g2d.drawLine(originX + (10*cellSide), originY, originX+(10*cellSide), originY + (rows*cellSide));
 
         //sections ROWS
-        for(int i =0; i < p.size(); i++){
+        for(int i =0; i < rowsBold.size(); i++){
 
-            for(int j = 0; j < p.size(); j++){
-                if(p.getBoldRows(i, j)){
+            for(int j = 0; j < rowsBold.size(); j++){
+                if(c.getBoldRows(i, j, rowsBold)){
                     g2d.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                     g2d.drawLine(x, y + cellSide, x+ cellSide, y + cellSide );
                     x += cellSide;
@@ -67,10 +69,10 @@ public class PuzzleDrawingPanel extends JComponent{
         y = originY;
 
         //sections COLUMNS
-        for(int i =0; i < p.size(); i++){
+        for(int i =0; i < colsBold.size(); i++){
 
-            for(int j = 0; j < p.size(); j++){
-                if(p.getBoldCols(i, j)){
+            for(int j = 0; j < colsBold.size(); j++){
+                if(c.getBoldCols(i, j, colsBold)){
                     g2d.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                     g2d.drawLine(x + cellSide, y, x+ cellSide, y + cellSide );
                     y += cellSide;
