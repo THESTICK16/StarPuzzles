@@ -29,7 +29,7 @@ public class HttpRequestGenerator {
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
         System.out.println("Response status: " + response.statusCode());
-        System.out.println("Response body: " + response.body());
+        //System.out.println("Response body: " + response.body());
 
         return response.body();
     }

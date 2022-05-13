@@ -31,18 +31,6 @@ public class PuzzleHandler implements HttpHandler{
             responseCode = 404;
             response = "Error 404: File not found :(\n";
         }
-//        parse = new Parser();
-//        String p1 = parse.puzzleFileToString(fileName);
-//
-//        //send string version of puzzle
-//        String response = p1;
-//        starb.puzzle.Parser parse = new Parser();
-
-
-//        String p1 = parse.puzzleFileToString(fileName);
-
-        //send string version of puzzle
-//        String response = p1;
 
         Headers responseHeaders = exchange.getResponseHeaders();
         responseHeaders.add("Content-Type", "text/plain");
@@ -51,12 +39,5 @@ public class PuzzleHandler implements HttpHandler{
         OutputStream os = exchange.getResponseBody();
         os.write(response.getBytes());
         os.close();
-    }
-
-    private void handleExchange(HttpExchange exchange) {
-
-
-
-        //TODO use a parser and puzzleADT to get the puzzle string from a random file string
     }
 }
