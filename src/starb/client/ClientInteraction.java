@@ -174,4 +174,11 @@ public class ClientInteraction {
     public ArrayList<Coordinate> getPlacedPoints() {
         return g.getPlacedPoints();
     }
+
+    /**
+     * @return the size of one side of the square board
+     */
+    public int getBoardSize() {
+        return g.getBoard().length;
+    }
 }

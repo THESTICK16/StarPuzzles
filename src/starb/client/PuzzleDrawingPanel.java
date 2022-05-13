@@ -1,10 +1,13 @@
 package starb.client;
 
+import starb.puzzle.Coordinate;
+
 import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PuzzleDrawingPanel extends JComponent{
@@ -91,10 +94,22 @@ public class PuzzleDrawingPanel extends JComponent{
     }
 
     private void paintState(Graphics g){
-//        char[][] gameState =
-        //TODO add method to clientInteraction to get the game board stateand which spaces are stars or dots, then call paint stars and dots methods
+        ArrayList<Coordinate> stars = c.getPlacedStars();
+        ArrayList<Coordinate> points = c.getPlacedPoints();
 
-//        g.drawOval(,, cellSide, cellSide);
+        int loopSize = Math.max(stars.size(), points.size());
+
+        for (int i = 0; i < loopSize; i++) {
+            if (i < stars.size()) {
+                Coordinate currentStar = stars.get(i);
+                paintStar(g, currentStar.getX() * cellSide, currentStar.getY() * cellSide, cellSide);
+            }
+            if (i < points.size()) {
+                Coordinate currentPoint = points.get(i);
+                paintPoint(g, currentPoint.getX() * cellSide, currentPoint.getY() * cellSide, cellSide);
+            }
+
+        }
     }
 
     private void paintStar(Graphics g, int x, int y, int w){
