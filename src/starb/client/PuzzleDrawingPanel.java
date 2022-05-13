@@ -99,16 +99,23 @@ public class PuzzleDrawingPanel extends JComponent{
         ArrayList<Coordinate> points = c.getPlacedPoints();
 
         int loopSize = Math.max(stars.size(), points.size());
+        int starSizeScale = 4;
+        int pointSizeScale = 3;
 
         for (int i = 0; i < loopSize; i++) {
             if (i < stars.size()) {
                 Coordinate currentStar = stars.get(i);
-                paintStar(g, currentStar.getX() * cellSide, currentStar.getY() * cellSide, cellSide);
+                int paintX = (currentStar.getX() * cellSide) + (cellSide / starSizeScale);
+                int paintY = (currentStar.getY() * cellSide) + (cellSide / starSizeScale);
+                paintStar(g, paintX, paintY, cellSide / 2);
 System.out.println("Stars: \n" + stars); //FIXME
             }
+
             if (i < points.size()) {
                 Coordinate currentPoint = points.get(i);
-                paintPoint(g, (currentPoint.getX() * cellSide), (currentPoint.getY() * cellSide), cellSide);
+                int paintX = (currentPoint.getX() * cellSide) + (cellSide / pointSizeScale);
+                int paintY = (currentPoint.getY() * cellSide) + (cellSide / pointSizeScale);
+                paintPoint(g, paintX, paintY, cellSide / pointSizeScale);
 System.out.println("Points: \n" + points); //FIXME
             }
 
