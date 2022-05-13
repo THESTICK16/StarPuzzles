@@ -103,13 +103,13 @@ public class PuzzleDrawingPanel extends JComponent{
         for (int i = 0; i < loopSize; i++) {
             if (i < stars.size()) {
                 Coordinate currentStar = stars.get(i);
-                paintStar(g, currentStar.getX() * cellSide, currentStar.getY() * cellSide, cellSide);
-System.out.println("Stars: \n" + stars); //FIXME
+                paintStar(g, currentStar.getX() * cellSide, currentStar.getY() * cellSide, cellSide*3/4);
+                System.out.println("Stars: \n" + stars); //FIXME
             }
             if (i < points.size()) {
                 Coordinate currentPoint = points.get(i);
-                paintPoint(g, (currentPoint.getX() * cellSide), (currentPoint.getY() * cellSide), cellSide);
-System.out.println("Points: \n" + points); //FIXME
+                paintPoint(g, (currentPoint.getX() * cellSide), (currentPoint.getY() * cellSide), cellSide*3/4);
+                System.out.println("Points: \n" + points); //FIXME
             }
 
         }

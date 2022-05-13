@@ -23,8 +23,8 @@ public class ClientInteraction {
     * @Param: grid location? call alterboard. gamestate.star or whatever
     */
     public void boardClick(int x, int y) {
-        x = x/550/10;
-        y = y/550/10;
+        x = convertCoordinate(x);
+        y = convertCoordinate(y);
 
         if(g.getSquare(x,y) == SPACE){
             g.setStar(x,y);
@@ -180,5 +180,13 @@ public class ClientInteraction {
      */
     public int getBoardSize() {
         return g.getBoard().length;
+    }
+
+    private int convertCoordinate(int val){
+        final int width = 500;
+        int dim = g.getGameState().length;
+        int threshold = width/dim;
+
+        return val/threshold;
     }
 }
