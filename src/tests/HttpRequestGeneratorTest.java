@@ -20,7 +20,6 @@ public class HttpRequestGeneratorTest {
     @Test
     public void getNewPuzzle() throws IOException, InterruptedException {
         String[] a = new String[0];
-        StarbServer.main(a);
-        hrg.getNewPuzzle();
+        System.out.println(hrg.getNewPuzzle()); //Verify that the right String format is being printed
     }
 }
