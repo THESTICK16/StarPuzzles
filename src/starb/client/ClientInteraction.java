@@ -52,6 +52,13 @@ public class ClientInteraction {
         g = new ClientGameState(puzzleString);
     }
 
+    public boolean checkInit(){
+        if(g!=null){
+            return true;
+        }
+        return false;
+    }
+
     public HashMap<Integer, boolean[]> getSectionRow(){
         //get intial client game state for sections
         int[][] grid = g.getBoard();

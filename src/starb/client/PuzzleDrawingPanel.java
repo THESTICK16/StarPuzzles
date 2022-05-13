@@ -21,13 +21,14 @@ public class PuzzleDrawingPanel extends JComponent{
 
     public PuzzleDrawingPanel() {
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        this.addMouseListener( new DrawPanelMouseListener() );
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        paintBoard(g);
+        if(c.checkInit()){
+            paintBoard(g);
+        }
     }
 
     private void paintBoard(Graphics g){
@@ -106,10 +107,7 @@ public class PuzzleDrawingPanel extends JComponent{
     }
 
 
-    private static class DrawPanelMouseListener extends MouseAdapter {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            System.out.printf("Click: (%d, %d)\n", e.getX(), e.getY());
-        }
+    public void updateBoard(int x, int y){
+        c.boardClick(x,y);
     }
 }

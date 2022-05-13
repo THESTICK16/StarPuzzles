@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PuzzleWindow extends JFrame{
     private PuzzleDrawingPanel graphicsPanel;
@@ -30,6 +32,15 @@ public class PuzzleWindow extends JFrame{
         startButton.add(start);
 
         graphicsPanel = new PuzzleDrawingPanel();
+
+        graphicsPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                graphicsPanel.updateBoard(e.getX(),e.getY());
+                puzzleRepaint();
+            }
+        });
 
         this.add(titlePanel, BorderLayout.NORTH);
         this.add(startButton, BorderLayout.SOUTH);
