@@ -47,6 +47,8 @@ public class ClientGameState {
             throw new IllegalArgumentException();
         }
         gameState[x][y] = STAR;
+
+//System.out.println(gameState[x][y] + " {[(" + x + ", " + y +")]}"); //FIXME
     }
 
     /**

@@ -31,6 +31,7 @@ public class PuzzleDrawingPanel extends JComponent{
         super.paintComponent(g);
         if(c.checkInit()){
             paintBoard(g);
+            paintState(g);
         }
     }
 
@@ -103,17 +104,19 @@ public class PuzzleDrawingPanel extends JComponent{
             if (i < stars.size()) {
                 Coordinate currentStar = stars.get(i);
                 paintStar(g, currentStar.getX() * cellSide, currentStar.getY() * cellSide, cellSide);
+System.out.println("Stars: \n" + stars); //FIXME
             }
             if (i < points.size()) {
                 Coordinate currentPoint = points.get(i);
-                paintPoint(g, currentPoint.getX() * cellSide, currentPoint.getY() * cellSide, cellSide);
+                paintPoint(g, (currentPoint.getX() * cellSide), (currentPoint.getY() * cellSide), cellSide);
+System.out.println("Points: \n" + points); //FIXME
             }
 
         }
     }
 
     private void paintStar(Graphics g, int x, int y, int w){
-        g.drawRect(x,y,w,w);
+        g.fillRect(x,y,w,w);
     }
 
     private void paintPoint(Graphics g, int x, int y, int w){
