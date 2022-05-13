@@ -93,6 +93,8 @@ public class PuzzleDrawingPanel extends JComponent{
     private void paintState(Graphics g){
 //        char[][] gameState =
         //TODO add method to clientInteraction to get the game board stateand which spaces are stars or dots, then call paint stars and dots methods
+
+//        g.drawOval(,, cellSide, cellSide);
     }
 
     private void paintStar(Graphics g, int x, int y, int w){
