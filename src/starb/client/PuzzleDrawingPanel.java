@@ -113,4 +113,11 @@ public class PuzzleDrawingPanel extends JComponent{
     public void updateBoard(int x, int y){
         c.boardClick(x,y);
     }
+
+    public boolean checkInit(){
+        if(c.checkInit()){
+            return true;
+        }
+        return false;
+    }
 }

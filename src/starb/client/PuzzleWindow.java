@@ -37,8 +37,11 @@ public class PuzzleWindow extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                graphicsPanel.updateBoard(e.getX(),e.getY());
-                puzzleRepaint();
+                System.out.println(e.getX()+","+e.getY());
+                if(graphicsPanel.checkInit()) {
+                    graphicsPanel.updateBoard(e.getX(), e.getY());
+                    puzzleRepaint();
+                }
             }
         });
 
