@@ -1,5 +1,9 @@
 package starb.client;
 
+import starb.puzzle.Coordinate;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import static starb.client.ClientGameState.SPACE;
@@ -36,18 +40,36 @@ public class ClientInteraction {
     * will send a request to the server to load a new puzzle in.
     */
     public void loadPuzzle() {
-        // String puzzleString = TODO Get puzzle from server
+        HttpRequestGenerator generator = new HttpRequestGenerator();
+        String puzzleString;
 
-        String puzzleString = "10 2\n\n" +"0,0,0,0,0,0,0,0,1,1\n"+
-                "0,0,0,0,0,0,4,0,1,1\n"+
-                "2,3,3,3,0,4,4,4,1,1\n"+
-                "2,2,2,2,5,6,6,4,1,1\n"+
-                "2,2,2,5,5,5,6,6,1,1\n"+
-                "2,2,7,5,5,5,6,6,1,1\n"+
-                "2,2,7,7,7,6,6,6,8,1\n"+
-                "2,2,2,2,2,2,6,6,8,1\n"+
-                "2,9,9,9,9,9,9,9,8,8\n"+
-                "9,9,9,9,9,9,9,9,9,8" + "\n\n0,1 0,4 1,6 1,8 2,1 2,3 3,7 3,9 4,3 4,5 5,0 5,7 6,2 6,4 7,6 7,8 8,0 8,2 9,5 9,9";
+        try {
+            puzzleString = generator.getNewPuzzle();
+        } catch (IOException e) {
+            puzzleString = "10 2\n\n" +"0,0,0,0,0,0,0,0,1,1\n"+
+                    "0,0,0,0,0,0,4,0,1,1\n"+
+                    "2,3,3,3,0,4,4,4,1,1\n"+
+                    "2,2,2,2,5,6,6,4,1,1\n"+
+                    "2,2,2,5,5,5,6,6,1,1\n"+
+                    "2,2,7,5,5,5,6,6,1,1\n"+
+                    "2,2,7,7,7,6,6,6,8,1\n"+
+                    "2,2,2,2,2,2,6,6,8,1\n"+
+                    "2,9,9,9,9,9,9,9,8,8\n"+
+                    "9,9,9,9,9,9,9,9,9,8" + "\n\n0,1 0,4 1,6 1,8 2,1 2,3 3,7 3,9 4,3 4,5 5,0 5,7 6,2 6,4 7,6 7,8 8,0 8,2 9,5 9,9";
+//            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            puzzleString = "10 2\n\n" +"0,0,0,0,0,0,0,0,1,1\n"+
+                    "0,0,0,0,0,0,4,0,1,1\n"+
+                    "2,3,3,3,0,4,4,4,1,1\n"+
+                    "2,2,2,2,5,6,6,4,1,1\n"+
+                    "2,2,2,5,5,5,6,6,1,1\n"+
+                    "2,2,7,5,5,5,6,6,1,1\n"+
+                    "2,2,7,7,7,6,6,6,8,1\n"+
+                    "2,2,2,2,2,2,6,6,8,1\n"+
+                    "2,9,9,9,9,9,9,9,8,8\n"+
+                    "9,9,9,9,9,9,9,9,9,8" + "\n\n0,1 0,4 1,6 1,8 2,1 2,3 3,7 3,9 4,3 4,5 5,0 5,7 6,2 6,4 7,6 7,8 8,0 8,2 9,5 9,9";
+//            throw new RuntimeException(e);
+        }
 
         g = new ClientGameState(puzzleString);
     }
@@ -138,4 +160,18 @@ public class ClientInteraction {
         return result[index];
     }
 
+
+    /**
+     * @return the list of stars currently placed on the board
+     */
+    public ArrayList<Coordinate> getPlacedStars() {
+        return g.getPlacedStars();
+    }
+
+    /**
+     * @return the list of points currently placed on the board
+     */
+    public ArrayList<Coordinate> getPlacedPoints() {
+        return g.getPlacedPoints();
+    }
 }

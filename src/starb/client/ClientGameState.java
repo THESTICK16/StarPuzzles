@@ -123,9 +123,9 @@ public class ClientGameState {
      */
     public boolean checkWin(){
         // Gets and stores all current stars in the game state
-        ArrayList<Coordinate> currStateStars = new ArrayList<>();
+        ArrayList<Coordinate> currStateStars = getPlacedStars();//new ArrayList<>();
 
-        for(int i = 0; i < gameState.length; i++){
+/*      for(int i = 0; i < gameState.length; i++){
             for(int j = 0; j < gameState[0].length; j++){
                 if(getSquare(i,j) == STAR){
                     Coordinate c = new Coordinate(i,j);
@@ -133,6 +133,7 @@ public class ClientGameState {
                 }
             }
         }
+*/
 
         // Checks to see if the solution and currState contain the same number of stars
         if(currStateStars.size() != puzzle.getSolution().size()){
@@ -153,5 +154,43 @@ public class ClientGameState {
             }
         }
         return true;
+    }
+
+    /**
+     * creates a list of coordinate objects representing the location of placed stars
+     * @return a list containing the locations of placed stars
+     */
+    public ArrayList<Coordinate> getPlacedStars() {
+        ArrayList<Coordinate> stars = new ArrayList<>();
+
+        for(int i = 0; i < gameState.length; i++){
+            for(int j = 0; j < gameState[0].length; j++){
+                if(getSquare(i,j) == STAR){
+                    Coordinate c = new Coordinate(i,j);
+                    stars.add(c);
+                }
+            }
+        }
+
+        return stars;
+    }
+
+    /**
+     * creates a list of coordinate objects representing the location of placed points
+     * @return a list containing the locations of placed points
+     */
+    public ArrayList<Coordinate> getPlacedPoints() {
+        ArrayList<Coordinate> points = new ArrayList<>();
+
+        for(int i = 0; i < gameState.length; i++){
+            for(int j = 0; j < gameState[0].length; j++){
+                if(getSquare(i,j) == POINT){
+                    Coordinate c = new Coordinate(i,j);
+                    points.add(c);
+                }
+            }
+        }
+
+        return points;
     }
 }
