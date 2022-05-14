@@ -75,24 +75,6 @@ public class ClientGameState {
         gameState[x][y] = SPACE;
     }
 
-
-//    /**
-//     * @param x
-//     * @param y
-//     * @return the symbol at the given x,y coordinate
-//     */
-//    public boolean alterBoard(char action, int locationX, int locationY) {
-//        if ((action != STAR && action != SPACE && action != CIRCLE) || locationX >= boardSize || locationY >= boardSize || locationX < 0 || locationY < 0) {
-//            return false;
-//        }
-//
-//        //TODO add a check to see if a star is being removed and remove it from the placedStars ArrayList
-//
-//        game[locationX][locationY] = action;
-//
-//        if (action == STAR) {
-//            placedStars.add(new Coordinate(locationX, locationY));
-
     public char getSquare(int x, int y) {
 
         if(x < 0 || x > gameState.length || y < 0 || y > gameState.length){
@@ -126,22 +108,13 @@ public class ClientGameState {
     public boolean checkWin(){
         // Gets and stores all current stars in the game state
         ArrayList<Coordinate> currStateStars = getPlacedStars();//new ArrayList<>();
-
-/*      for(int i = 0; i < gameState.length; i++){
-            for(int j = 0; j < gameState[0].length; j++){
-                if(getSquare(i,j) == STAR){
-                    Coordinate c = new Coordinate(i,j);
-                    currStateStars.add(c);
-                }
-            }
-        }
-*/
+        System.out.println(currStateStars.toString());
+        System.out.println(puzzle.getSolution().toString());
 
         // Checks to see if the solution and currState contain the same number of stars
         if(currStateStars.size() != puzzle.getSolution().size()){
             return false;
         }
-
 
         // Checks to see if all stars in currState are in the solution
         for(int i = 0; i < currStateStars.size(); i++){

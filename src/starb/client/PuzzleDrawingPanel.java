@@ -29,6 +29,13 @@ public class PuzzleDrawingPanel extends JComponent{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        if(c.checkInit()) {
+            if (c.checkWin()) {
+                g.setColor(Color.green);
+                g.fillRect(0,0,WIDTH,WIDTH);
+                g.setColor(Color.black);
+            }
+        }
         if(c.checkInit()){
             paintBoard(g);
             paintState(g);
@@ -95,6 +102,7 @@ public class PuzzleDrawingPanel extends JComponent{
     }
 
     private void paintState(Graphics g){
+        //TODO implement in a way that doesn't involve Coordinate class to reduce coupling
         ArrayList<Coordinate> stars = c.getPlacedStars();
         ArrayList<Coordinate> points = c.getPlacedPoints();
 
@@ -108,7 +116,6 @@ public class PuzzleDrawingPanel extends JComponent{
                 int paintX = (currentStar.getX() * cellSide) + (cellSide / starSizeScale);
                 int paintY = (currentStar.getY() * cellSide) + (cellSide / starSizeScale);
                 paintStar(g, paintX, paintY, cellSide / 2);
-System.out.println("Stars: \n" + stars); //FIXME
             }
 
             if (i < points.size()) {
@@ -116,13 +123,13 @@ System.out.println("Stars: \n" + stars); //FIXME
                 int paintX = (currentPoint.getX() * cellSide) + (cellSide / pointSizeScale);
                 int paintY = (currentPoint.getY() * cellSide) + (cellSide / pointSizeScale);
                 paintPoint(g, paintX, paintY, cellSide / pointSizeScale);
-System.out.println("Points: \n" + points); //FIXME
             }
 
         }
     }
 
     private void paintStar(Graphics g, int x, int y, int w){
+        //TODO Make cooler shape
         g.fillRect(x,y,w,w);
     }
 

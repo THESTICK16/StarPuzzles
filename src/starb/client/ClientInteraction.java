@@ -40,6 +40,7 @@ public class ClientInteraction {
     * will send a request to the server to load a new puzzle in.
     */
     public void loadPuzzle() {
+        //TODO Implement server function
         HttpRequestGenerator generator = new HttpRequestGenerator();
         String puzzleString;
 
@@ -79,6 +80,10 @@ public class ClientInteraction {
             return true;
         }
         return false;
+    }
+
+    public boolean checkWin(){
+        return g.checkWin();
     }
 
     public HashMap<Integer, boolean[]> getSectionRow(){
