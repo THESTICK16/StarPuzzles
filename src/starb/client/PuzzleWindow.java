@@ -20,7 +20,6 @@ public class PuzzleWindow extends JFrame{
         JButton start = new JButton("Start New Puzzle");
 
         start.addActionListener(e -> {
-            System.out.println("Start Button Clicked!!!!");
             graphicsPanel.loadPuzzle();
             puzzleRepaint();
         });
@@ -33,7 +32,6 @@ public class PuzzleWindow extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                System.out.println(e.getX()+","+e.getY());
                 if(graphicsPanel.checkInit()) {
                     graphicsPanel.updateBoard(e.getX(), e.getY());
                     puzzleRepaint();

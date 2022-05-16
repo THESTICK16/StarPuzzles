@@ -107,8 +107,6 @@ public class ClientGameState {
     public boolean checkWin(){
         // Gets and stores all current stars in the game state
         ArrayList<Coordinate> currStateStars = getPlacedStars();//new ArrayList<>();
-        System.out.println(currStateStars.toString());
-        System.out.println(puzzle.getSolution().toString());
 
         // Checks to see if the solution and currState contain the same number of stars
         if(currStateStars.size() != puzzle.getSolution().size()){

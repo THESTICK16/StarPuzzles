@@ -116,7 +116,7 @@ public class PuzzleDrawingPanel extends JComponent{
      * @param g
      */
     private void paintState(Graphics g){
-        //TODO implement in a way that doesn't involve Coordinate class to reduce coupling
+        //TODO if time: implement in a way that doesn't involve Coordinate class to reduce coupling
         ArrayList<Coordinate> stars = c.getPlacedStars();
         ArrayList<Coordinate> points = c.getPlacedPoints();
 
@@ -192,11 +192,6 @@ public class PuzzleDrawingPanel extends JComponent{
     public void loadPuzzle(){
         c.loadPuzzle();
     }
-
-    public boolean win(){
-        return c.checkWin();
-    }
-
 
     /**
      * @param x the x coordinate to update within the gamestate

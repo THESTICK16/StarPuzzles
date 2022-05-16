@@ -2,7 +2,6 @@ package starb.client;
 
 import starb.puzzle.Coordinate;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,15 +12,14 @@ public class ClientInteraction {
 
     private ClientGameState g;
 
-    public ClientInteraction(){
-
-    }
+    public ClientInteraction(){}
 
 
-    /*
-    * Determines if the user adds a star to the grid or not based on mouse click.
-    * @Param: grid location? call alterboard. gamestate.star or whatever
-    */
+    /**
+     * Updates the gamestate after
+     * @param x x coordinate of the click
+     * @param y y coordinate of the click
+     */
     public void boardClick(int x, int y) {
         x = convertCoordinate(x);
         y = convertCoordinate(y);
@@ -35,12 +33,8 @@ public class ClientInteraction {
         }
     }
 
-    /*
-    * This will load a puzzle in. If the user mouse click on the button to load a puzzle in, this method
-    * will send a request to the server to load a new puzzle in.
-    */
+
     public void loadPuzzle() {
-        //TODO Implement server function
         HttpRequestGenerator generator = new HttpRequestGenerator();
         String puzzleString;
         try {
@@ -49,36 +43,6 @@ public class ClientInteraction {
         }catch (Exception e){
             e.printStackTrace();
         }
-        /*
-        try {
-            puzzleString = generator.getNewPuzzle();
-        } catch (IOException e) {
-            puzzleString = "10 2\n\n" +"0,0,0,0,0,0,0,0,1,1\n"+
-                    "0,0,0,0,0,0,4,0,1,1\n"+
-                    "2,3,3,3,0,4,4,4,1,1\n"+
-                    "2,2,2,2,5,6,6,4,1,1\n"+
-                    "2,2,2,5,5,5,6,6,1,1\n"+
-                    "2,2,7,5,5,5,6,6,1,1\n"+
-                    "2,2,7,7,7,6,6,6,8,1\n"+
-                    "2,2,2,2,2,2,6,6,8,1\n"+
-                    "2,9,9,9,9,9,9,9,8,8\n"+
-                    "9,9,9,9,9,9,9,9,9,8" + "\n\n0,1 0,4 1,6 1,8 2,1 2,3 3,7 3,9 4,3 4,5 5,0 5,7 6,2 6,4 7,6 7,8 8,0 8,2 9,5 9,9";
-//            throw new RuntimeException(e);
-        } catch (InterruptedException e) {
-            puzzleString = "10 2\n\n" +"0,0,0,0,0,0,0,0,1,1\n"+
-                    "0,0,0,0,0,0,4,0,1,1\n"+
-                    "2,3,3,3,0,4,4,4,1,1\n"+
-                    "2,2,2,2,5,6,6,4,1,1\n"+
-                    "2,2,2,5,5,5,6,6,1,1\n"+
-                    "2,2,7,5,5,5,6,6,1,1\n"+
-                    "2,2,7,7,7,6,6,6,8,1\n"+
-                    "2,2,2,2,2,2,6,6,8,1\n"+
-                    "2,9,9,9,9,9,9,9,8,8\n"+
-                    "9,9,9,9,9,9,9,9,9,8" + "\n\n0,1 0,4 1,6 1,8 2,1 2,3 3,7 3,9 4,3 4,5 5,0 5,7 6,2 6,4 7,6 7,8 8,0 8,2 9,5 9,9";
-//            throw new RuntimeException(e);
-        }
-        */
-
     }
 
     public boolean checkInit(){
@@ -181,12 +145,7 @@ public class ClientInteraction {
         return g.getPlacedPoints();
     }
 
-    /**
-     * @return the size of one side of the square board
-     */
-    public int getBoardSize() {
-        return g.getBoard().length;
-    }
+
 
     private int convertCoordinate(int val){
         final int width = 500;
