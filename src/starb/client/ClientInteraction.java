@@ -43,7 +43,13 @@ public class ClientInteraction {
         //TODO Implement server function
         HttpRequestGenerator generator = new HttpRequestGenerator();
         String puzzleString;
-
+        try {
+            puzzleString = generator.getNewPuzzle();
+            g = new ClientGameState(puzzleString);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        /*
         try {
             puzzleString = generator.getNewPuzzle();
         } catch (IOException e) {
@@ -71,8 +77,8 @@ public class ClientInteraction {
                     "9,9,9,9,9,9,9,9,9,8" + "\n\n0,1 0,4 1,6 1,8 2,1 2,3 3,7 3,9 4,3 4,5 5,0 5,7 6,2 6,4 7,6 7,8 8,0 8,2 9,5 9,9";
 //            throw new RuntimeException(e);
         }
+        */
 
-        g = new ClientGameState(puzzleString);
     }
 
     public boolean checkInit(){
@@ -87,7 +93,7 @@ public class ClientInteraction {
     }
 
     public HashMap<Integer, boolean[]> getSectionRow(){
-        //get intial client game state for sections
+        //get initial client game state for sections
         int[][] grid = g.getBoard();
 
         HashMap<Integer, boolean[]> sectionsRow = new HashMap<>();
@@ -148,11 +154,6 @@ public class ClientInteraction {
 
         return sectionsCol;
 
-    }
-
-    public int size( HashMap<Integer, boolean[]> dim){
-        int size = dim.size();
-        return size;
     }
 
     public boolean getBoldRows(int row, int index, HashMap<Integer, boolean[]> rowsMap){

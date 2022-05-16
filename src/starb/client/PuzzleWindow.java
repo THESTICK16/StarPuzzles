@@ -4,8 +4,6 @@ import javax.swing.*;
 
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -21,13 +19,10 @@ public class PuzzleWindow extends JFrame{
         JPanel startButton = new JPanel();
         JButton start = new JButton("Start New Puzzle");
 
-        start.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Start Button Clicked!!!!");
-                graphicsPanel.loadPuzzle();
-                puzzleRepaint();
-            }
+        start.addActionListener(e -> {
+            System.out.println("Start Button Clicked!!!!");
+            graphicsPanel.loadPuzzle();
+            puzzleRepaint();
         });
 
         startButton.add(start);
@@ -53,9 +48,12 @@ public class PuzzleWindow extends JFrame{
         setResizable(false);
     }
 
+
+    /**
+     * Repaints the PuzzleDrawingPanel which is the portion of the window containing the actual puzzle
+     */
     public void puzzleRepaint(){
         graphicsPanel.repaint();
-        //test comment
     }
 
 }

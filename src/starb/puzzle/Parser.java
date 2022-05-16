@@ -157,7 +157,7 @@ public class Parser {
         String[] solution = boardString.split("\n\n")[2].split(" ");
         ArrayList<Coordinate> l = new ArrayList<>();
         for(int i = 0; i < solution.length; i++){
-            Coordinate c = new Coordinate(Integer.parseInt(solution[i].split(",")[0]),Integer.parseInt(solution[i].split(",")[1]));
+            Coordinate c = new Coordinate(Integer.parseInt(solution[i].split(",")[1]),Integer.parseInt(solution[i].split(",")[0]));
             l.add(c);
         }
         return l;

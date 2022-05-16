@@ -20,12 +20,18 @@ public class PuzzleDrawingPanel extends JComponent{
     static final int originY = 0;
     static final int cellSide = 50;
 
-    ClientInteraction c = new ClientInteraction();
+    private ClientInteraction c = new ClientInteraction();
 
     public PuzzleDrawingPanel() {
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
     }
 
+    /**
+     * Method to paint the panel and bring everything together.
+     * If gamestate has been instantiated (by load puzzle button) will paint board and state
+     * If win is present, will paint background green.
+     * @param g
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -42,6 +48,10 @@ public class PuzzleDrawingPanel extends JComponent{
         }
     }
 
+    /**
+     * Method to paint the board grid/cells from the gamestate
+     * @param g
+     */
     private void paintBoard(Graphics g){
         Graphics2D g2d = (Graphics2D) g.create();
         HashMap<Integer, boolean[]> rowsBold = c.getSectionRow();
@@ -101,6 +111,10 @@ public class PuzzleDrawingPanel extends JComponent{
         }
     }
 
+    /**
+     * Method to paint the currently placed stars and points from the gamestate
+     * @param g
+     */
     private void paintState(Graphics g){
         //TODO implement in a way that doesn't involve Coordinate class to reduce coupling
         ArrayList<Coordinate> stars = c.getPlacedStars();
@@ -128,6 +142,11 @@ public class PuzzleDrawingPanel extends JComponent{
         }
     }
 
+    /**
+     * @param g
+     * @param x the x coordinate to paint the star
+     * @param y te y coordinate to paint the star
+     */
     private void paintStar(Graphics g, int x, int y, int w){
         int[] xPoints = new int[10];
         int[] yPoints = new int[10];
@@ -157,9 +176,15 @@ public class PuzzleDrawingPanel extends JComponent{
 
         g.fillPolygon(xPoints, yPoints, 10);
         //g.fillRect(x, y, w, w);
-        
     }
 
+
+    /**
+     * @param g
+     * @param x the x coordinate of the point
+     * @param y the y coordinate of the point
+     * @param w the width of the point
+     */
     private void paintPoint(Graphics g, int x, int y, int w){
         g.fillOval(x,y,w,w);
     }
@@ -168,11 +193,24 @@ public class PuzzleDrawingPanel extends JComponent{
         c.loadPuzzle();
     }
 
+    public boolean win(){
+        return c.checkWin();
+    }
 
+
+    /**
+     * @param x the x coordinate to update within the gamestate
+     * @param y the y coordinate to update within the gamestate
+     */
     public void updateBoard(int x, int y){
         c.boardClick(x,y);
     }
 
+
+    /**
+     * Checks to see if the ClientInteraction instance has been instantiated yet.
+     * @return true if the board has been initiated
+     */
     public boolean checkInit(){
         if(c.checkInit()){
             return true;
