@@ -190,7 +190,7 @@ public class PuzzleDrawingPanel extends JComponent{
         yPoints[8] = y+14*2+5;
         yPoints[9] = y+9*2+5;
 
-
+        g.setColor(Color.BLACK);
         g.fillPolygon(xPoints, yPoints, 10);
         //g.fillRect(x, y, w, w);
     }
@@ -203,6 +203,7 @@ public class PuzzleDrawingPanel extends JComponent{
      * @param w the width of the point
      */
     private void paintPoint(Graphics g, int x, int y, int w){
+        g.setColor(Color.GRAY);
         g.fillOval(x,y,w,w);
     }
 

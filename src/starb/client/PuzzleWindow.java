@@ -23,9 +23,9 @@ public class PuzzleWindow extends JFrame{
         
 
         start.addActionListener(e -> {
-            startGame = true;
             graphicsPanel.loadPuzzle();
             puzzleRepaint();
+            startGame = true;
         });
 
         check.addActionListener(e ->{
