@@ -44,14 +44,19 @@ public class ClientInteraction {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Checks if ClientGameState object "g" is null or not.
+     * @return true if not null, false if null.
+     */
     public boolean checkInit(){
         if(g!=null){
             return true;
         }
         return false;
     }
-
+    /**
+     * Calls checkWin from ClientGameState.
+     */
     public boolean checkWin(){
         return g.checkWin();
     }
