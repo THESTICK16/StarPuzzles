@@ -35,12 +35,11 @@ public class PuzzleDrawingPanel extends JComponent{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if(c.checkInit()) {
-            if (c.checkWin()) {
-                g.setColor(Color.green);
-                g.fillRect(0,0,WIDTH,WIDTH);
-                g.setColor(Color.black);
-            }
+        if(c.checkInit() && c.checkWin()) {
+            g.setColor(Color.green);
+            g.fillRect(0,0,WIDTH,WIDTH);
+            g.setColor(Color.black);
+            
         }
         if(c.checkInit()){
             paintBoard(g);
@@ -50,7 +49,6 @@ public class PuzzleDrawingPanel extends JComponent{
             paintEmptyBoard(g);
         }
     }
-
     /**
      * Paints an empty board (no sections)
      * @param g

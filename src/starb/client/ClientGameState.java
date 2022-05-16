@@ -118,6 +118,8 @@ public class ClientGameState {
             boolean inSolution = false;
             for(int j = 0; j < puzzle.getSolution().size(); j++){
                 if(currStateStars.get(i).compareCoord(puzzle.getSolution().get(j))){
+                    //System.out.println("Current: " + currStateStars.get(i));
+                    //System.out.println("Solution: " + puzzle.getSolution().get(j));
                     inSolution = true;
                 }
             }

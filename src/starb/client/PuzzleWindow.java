@@ -28,16 +28,13 @@ public class PuzzleWindow extends JFrame{
             startGame = true;
         });
 
-        check.addActionListener(e ->{
-            //check solution
-
-        });
+       
 
         startButton.add(start);
         //if started new puzzle
-        if(startGame){
-            startButton.add(check);
-        }
+        
+        startButton.add(check);
+        
         
 
         graphicsPanel = new PuzzleDrawingPanel();
