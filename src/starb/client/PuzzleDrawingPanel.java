@@ -113,8 +113,8 @@ public class PuzzleDrawingPanel extends JComponent{
         for (int i = 0; i < loopSize; i++) {
             if (i < stars.size()) {
                 Coordinate currentStar = stars.get(i);
-                int paintX = (currentStar.getX() * cellSide) + (cellSide / starSizeScale);
-                int paintY = (currentStar.getY() * cellSide) + (cellSide / starSizeScale);
+                int paintX = (currentStar.getX() * cellSide) + (cellSide / starSizeScale) - 5;
+                int paintY = (currentStar.getY() * cellSide) + (cellSide / starSizeScale) - 5;
                 paintStar(g, paintX, paintY, cellSide / 2);
             }
 
@@ -129,8 +129,35 @@ public class PuzzleDrawingPanel extends JComponent{
     }
 
     private void paintStar(Graphics g, int x, int y, int w){
-        //TODO Make cooler shape
-        g.fillRect(x,y,w,w);
+        int[] xPoints = new int[10];
+        int[] yPoints = new int[10];
+
+        xPoints[0] = x+0*2+5;
+        xPoints[1] = x+5*2+5;
+        xPoints[2] = x+7*2+5;
+        xPoints[3] = x+9*2+5;
+        xPoints[4] = x+14*2+5;
+        xPoints[5] = x+11*2+5;
+        xPoints[6] = x+12*2+5;
+        xPoints[7] = x+7*2+5;
+        xPoints[8] = x+2*2+5;
+        xPoints[9] = x+4*2+5;
+        
+        yPoints[0] = y+6*2+5;
+        yPoints[1] = y+6*2+5;
+        yPoints[2] = y+0*2+5;
+        yPoints[3] = y+6*2+5;
+        yPoints[4] = y+6*2+5;
+        yPoints[5] = y+9*2+5;
+        yPoints[6] = y+14*2+5;
+        yPoints[7] = y+12*2+5;
+        yPoints[8] = y+14*2+5;
+        yPoints[9] = y+9*2+5;
+
+
+        g.fillPolygon(xPoints, yPoints, 10);
+        //g.fillRect(x, y, w, w);
+        
     }
 
     private void paintPoint(Graphics g, int x, int y, int w){
