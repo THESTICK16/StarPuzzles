@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 
 public class PuzzleWindow extends JFrame{
     private PuzzleDrawingPanel graphicsPanel;
+    boolean startGame = false;
 
     public PuzzleWindow() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -18,13 +19,26 @@ public class PuzzleWindow extends JFrame{
         titlePanel.add( new JLabel("Star Battle Puzzle") );
         JPanel startButton = new JPanel();
         JButton start = new JButton("Start New Puzzle");
+        JButton check = new JButton("Check");
+        
 
         start.addActionListener(e -> {
+            startGame = true;
             graphicsPanel.loadPuzzle();
             puzzleRepaint();
         });
 
+        check.addActionListener(e ->{
+            //check solution
+
+        });
+
         startButton.add(start);
+        //if started new puzzle
+        if(startGame){
+            startButton.add(check);
+        }
+        
 
         graphicsPanel = new PuzzleDrawingPanel();
 

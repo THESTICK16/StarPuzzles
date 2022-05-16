@@ -46,6 +46,23 @@ public class PuzzleDrawingPanel extends JComponent{
             paintBoard(g);
             paintState(g);
         }
+        else{
+            paintEmptyBoard(g);
+        }
+    }
+
+    /**
+     * Paints an empty board (no sections)
+     * @param g
+     */
+    private void paintEmptyBoard(Graphics g1){
+        for(int i = 0; i < rows + 1; i++){
+            g1.drawLine(originX, originY + (i * cellSide), originX+(cols * cellSide), originY + (i * cellSide));
+        }
+
+        for(int i = 0; i < cols + 1; i++){
+            g1.drawLine(originX + (i * cellSide), originY, originX+(i * cellSide), originY + (rows * cellSide));
+        }
     }
 
     /**
