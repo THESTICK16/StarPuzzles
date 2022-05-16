@@ -23,4 +23,12 @@ class CoordinateTest {
     void getY() {
         assertEquals(2,c.getY());
     }
+
+    @Test
+    void testCompare(){
+        Coordinate c2 = new Coordinate(1,2);
+        Coordinate c3 = new Coordinate(5, 3);
+        assertTrue(c.compareCoord(c2));
+        assertFalse(c.compareCoord(c3));
+    }
 }

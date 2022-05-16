@@ -19,6 +19,12 @@ public class HttpRequestGenerator {
         return sendRequest();
     }
 
+    /**
+     * sends an Httprequest to retrieve a new puzzle from the server
+     * @return a string representation of a puzzle
+     * @throws IOException
+     * @throws InterruptedException
+     */
     private String sendRequest() throws IOException, InterruptedException {
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()

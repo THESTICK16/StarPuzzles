@@ -51,7 +51,7 @@ public class PuzzleDrawingPanel extends JComponent{
     }
     /**
      * Paints an empty board (no sections)
-     * @param g
+     * @param g1
      */
     private void paintEmptyBoard(Graphics g1){
         for(int i = 0; i < rows + 1; i++){
