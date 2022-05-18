@@ -12,11 +12,14 @@ public class ClientInteraction {
 
     private ClientGameState g;
 
+    /**
+     * Initializes a client interaction. 
+     */
     public ClientInteraction(){}
 
 
     /**
-     * Updates the gamestate after
+     * Updates the gamestate after a click.
      * @param x x coordinate of the click
      * @param y y coordinate of the click
      */
@@ -34,6 +37,9 @@ public class ClientInteraction {
     }
 
 
+    /**
+     * Loads a puzzle sent from the server. 
+     */
     public void loadPuzzle() {
         HttpRequestGenerator generator = new HttpRequestGenerator();
         String puzzleString;
@@ -44,6 +50,7 @@ public class ClientInteraction {
             e.printStackTrace();
         }
     }
+
     /**
      * Checks if ClientGameState object "g" is null or not.
      * @return true if not null, false if null.
@@ -54,6 +61,7 @@ public class ClientInteraction {
         }
         return false;
     }
+
     /**
      * Calls checkWin from ClientGameState.
      */
@@ -61,6 +69,13 @@ public class ClientInteraction {
         return g.checkWin();
     }
 
+    /**
+     * Uses the client game state to create/ find the 
+     * puzzle's sections. This method completes the task for the rows
+     * when drawn in the GUI. It compares each value in each column,
+     * determining if the line should be bolded or not. 
+     * @return a HashMap of true false values for each row. 
+     */
     public HashMap<Integer, boolean[]> getSectionRow(){
         //get initial client game state for sections
         int[][] grid = g.getBoard();
@@ -93,6 +108,13 @@ public class ClientInteraction {
 
     }
 
+    /**
+     * Uses the client game state to create/ find the 
+     * puzzle's sections. This method completes the task for the columns
+     * when drawn in the GUI. It compares each value in each row,
+     * determining if the line should be bolded or not. 
+     * @return a HashMap of true false values for each column. 
+     */
     public HashMap<Integer, boolean[]> getSectionCol(){
         //get intial client game state for sections
         int[][] grid = g.getBoard();
@@ -125,11 +147,25 @@ public class ClientInteraction {
 
     }
 
+    /**
+     * Returns if a line should be bolded or not. 
+     * @param row row number
+     * @param index row line to be drawn
+     * @param rowsMap
+     * @return a boolean value. 
+     */
     public boolean getBoldRows(int row, int index, HashMap<Integer, boolean[]> rowsMap){
         boolean[] result = rowsMap.get(row);
         return result[index];
     }
 
+    /**
+     * Returns if a line should be bolded or not. 
+     * @param col column number
+     * @param index column line to be drawn
+     * @param colMap
+     * @return a boolean value. 
+     */
     public boolean getBoldCols(int col, int index, HashMap<Integer, boolean[]> colMap){
         boolean[] result = colMap.get(col);
         return result[index];
@@ -137,6 +173,7 @@ public class ClientInteraction {
 
 
     /**
+     * Returns a list of the locations of the stars on the current board. 
      * @return the list of stars currently placed on the board
      */
     public ArrayList<Coordinate> getPlacedStars() {
@@ -144,6 +181,7 @@ public class ClientInteraction {
     }
 
     /**
+     * Returns a list of the locations of the dots on the current board.
      * @return the list of points currently placed on the board
      */
     public ArrayList<Coordinate> getPlacedPoints() {
@@ -151,7 +189,11 @@ public class ClientInteraction {
     }
 
 
-
+    /**
+     * 
+     * @param val
+     * @return
+     */
     private int convertCoordinate(int val){
         final int width = 500;
         int dim = g.getGameState().length;

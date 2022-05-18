@@ -74,6 +74,12 @@ public class ClientGameState {
         gameState[x][y] = SPACE;
     }
 
+    /**
+     * Gets the current cell based on gameState
+     * @param x x- coordinate
+     * @param y y-coordinate
+     * @return that character at that location in game state. 
+     */
     public char getSquare(int x, int y) {
 
         if(x < 0 || x > gameState.length || y < 0 || y > gameState.length){

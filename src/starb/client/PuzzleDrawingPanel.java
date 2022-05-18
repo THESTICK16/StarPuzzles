@@ -158,6 +158,7 @@ public class PuzzleDrawingPanel extends JComponent{
     }
 
     /**
+     * Draws a star. 
      * @param g
      * @param x the x coordinate to paint the star
      * @param y te y coordinate to paint the star
@@ -195,6 +196,7 @@ public class PuzzleDrawingPanel extends JComponent{
 
 
     /**
+     * Draws a dot.
      * @param g
      * @param x the x coordinate of the point
      * @param y the y coordinate of the point
@@ -205,11 +207,15 @@ public class PuzzleDrawingPanel extends JComponent{
         g.fillOval(x,y,w,w);
     }
 
+    /**
+     * Loads a puzzle from the client interaction class.
+     */
     public void loadPuzzle(){
         c.loadPuzzle();
     }
 
     /**
+     * Updates the board in client game state based on where the user clicks.
      * @param x the x coordinate to update within the gamestate
      * @param y the y coordinate to update within the gamestate
      */
