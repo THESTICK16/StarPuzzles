@@ -84,10 +84,6 @@
  - Actual Result:
     The background does turn green if solved, otherwise the GUI is nnot affected. 
 
-## Parser
-
-## PuzzleAdt
-
 ## ClientGameState
  - Test Steps:
     1. Run StarbClient

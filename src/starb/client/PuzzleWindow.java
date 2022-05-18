@@ -19,7 +19,6 @@ public class PuzzleWindow extends JFrame{
         titlePanel.add( new JLabel("Star Battle Puzzle") );
         JPanel startButton = new JPanel();
         JButton start = new JButton("Start New Puzzle");
-        JButton check = new JButton("Check");
         
 
         start.addActionListener(e -> {
@@ -27,13 +26,7 @@ public class PuzzleWindow extends JFrame{
             puzzleRepaint();
             startGame = true;
         });
-
-       
-
-        startButton.add(start);
-        //if started new puzzle
-        
-        startButton.add(check);
+         startButton.add(start);
         
         
 
