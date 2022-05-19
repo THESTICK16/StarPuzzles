@@ -17,34 +17,49 @@ public class ClientGameStateTest {
 
     ClientGameState g = new ClientGameState(puzzle1);
 
+    /**
+     *ensures the method returns the proper value for a given space
+     */
     @Test
     void getSquare1() {
         assertEquals(' ',g.getSquare(0,0));
     }
 
+    /**
+     * ensures that attempts to access a square outside the bounds will throw an exception
+     */
     @Test // This same code is in all the set and get methods involving a single square
     void getSquareWrongDimension() {
         assertThrows(IllegalArgumentException.class,() ->{g.getSquare(1000,1000);});
     }
 
+    /**
+     * ensures a star is properly set to the game state at the given location
+     */
     @Test
     void setStar() {
         g.setStar(0,0);
         assertEquals('*', g.getSquare(0,0));
     }
 
+    /**
+     * ensures a point is properly set to the game state at the given location
+     */
     @Test
     void setPoint() {
         g.setPoint(0,0);
         assertEquals('.', g.getSquare(0,0));
     }
 
+    /**
+     * ensures a space is properly set to the game state at the given location
+     */
     @Test
     void setSpace() {
         g.setSpace(0,0);
         assertEquals(' ', g.getSquare(0,0));
     }
-
+    /*
     @Test
     void getBoard() {
     }
@@ -52,7 +67,11 @@ public class ClientGameStateTest {
     @Test
     void getGameState() {
     }
+     */
 
+    /**
+     * ensures that check win returns true when the puzzle has been solved
+     */
     @Test
     void checkWin() {
         ArrayList<Coordinate> solution = p.stringToBoard(puzzle1).getSolution();
@@ -63,6 +82,9 @@ public class ClientGameStateTest {
         assertTrue(g.checkWin());
     }
 
+    /**
+     *ensures checkwin returns false when the number of stars is incorrect
+     */
     @Test
     void checkWinFalseSize() {
         ArrayList<Coordinate> solution = p.stringToBoard(puzzle1).getSolution();
@@ -74,6 +96,9 @@ public class ClientGameStateTest {
         assertFalse(g.checkWin());
     }
 
+    /**
+     *ensures checkWin returns false when given an incorrect solution of the proper size
+     */
     @Test
     void checkWinFalseCoordinate() {
         ArrayList<Coordinate> solution = p.stringToBoard(puzzle1).getSolution();
