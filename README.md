@@ -1,3 +1,11 @@
+# Programming Assignment Star Battle Puzzles
+
+* Name: Rainier S, Ashwin D, Vicky K, Ryan Y
+* Course/Semester: CSCI 390 Spring 2022
+* Class Section: 01
+* Lab section: N/A
+* Sources consulted: https://krazydad.com/starbattle/
+* Comments for grader:  
 Start the server in class "StarbServer" and run "StarbClient." 
 In the GUI window, click start new puzzle. In our puzzle, 10x10, each row, column, and bolded region
 must contain 2 stars each, and stars must not be

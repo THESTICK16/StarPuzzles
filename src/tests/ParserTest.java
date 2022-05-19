@@ -27,7 +27,9 @@ class ParserTest {
             "\n" +
             "0,1 0,4 1,6 1,8 2,1 2,3 3,7 3,9 4,3 4,5 5,0 5,7 6,2 6,4 7,6 7,8 8,0 8,2 9,5 9,9";
 
-
+    /**
+     * ensure that the method parses the file correctly and returns the appropriate string value
+     */
     @Test
     void puzzleFileToString() {
         String result = p.puzzleFileToString("puzzles/puzzle-1-1-1.txt");
@@ -38,6 +40,9 @@ class ParserTest {
 
     }
 
+    /**
+     *Ensures that the parser correctly reads the coordinates of the solution and returns a list containing them as Coordinate objects
+     */
     @Test
     void stringToBoardSolution() {
         PuzzleAdt result = p.stringToBoard(boardRep);
@@ -47,6 +52,9 @@ class ParserTest {
         assertEquals("[0,1, 0,4, 1,6, 1,8, 2,1, 2,3, 3,7, 3,9, 4,3, 4,5, 5,0, 5,7, 6,2, 6,4, 7,6, 7,8, 8,0, 8,2, 9,5, 9,9]",resultSolution.toString());
     }
 
+    /**
+     *ensures the parser can convert a PuzzleADT back to a String in the proper format
+     */
     @Test
     void boardToString() {
         PuzzleAdt result = p.stringToBoard(boardRep);
@@ -55,12 +63,18 @@ class ParserTest {
         assertEquals(boardRep, resultString);
     }
 
+    /**
+     *prints an observable example of the puzzle string to the console for manual testing
+     */
     @Test
     void fileToStringExample(){
         String example = p.puzzleFileToString(boardRep);
         System.out.println(example);
     }
 
+    /**
+     * ensures the parser can properly convert a puzzle string to a PuzzleADT
+     */
     @Test
     void stringToBoard(){
         PuzzleAdt puzzle = p.stringToBoard(boardRep);
