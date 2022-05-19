@@ -11,6 +11,9 @@ public class PuzzleWindow extends JFrame{
     private PuzzleDrawingPanel graphicsPanel;
     boolean startGame = false;
 
+    /**
+     * Constructor that creates the JFrame
+     */
     public PuzzleWindow() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Star Battle");

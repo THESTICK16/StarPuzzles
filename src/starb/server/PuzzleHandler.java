@@ -5,16 +5,18 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import starb.puzzle.Parser;
-import starb.puzzle.PuzzleAdt;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class PuzzleHandler implements HttpHandler{
 
+    /**
+     * Method chooses a random puzzle and calls onto the 
+     * parser to send the response puzzle as a string.
+     */
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         URI uri = exchange.getRequestURI();

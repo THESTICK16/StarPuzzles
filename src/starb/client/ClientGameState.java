@@ -26,7 +26,6 @@ public class ClientGameState {
     public ClientGameState(String boardString){
         Parser p = new Parser();
         puzzle = p.stringToBoard(boardString);
-       //System.out.println("Board String: " + boardString);
         gameState = new char[puzzle.getBoard().length][puzzle.getBoard().length];
 
         // Initialize gameBoard with all spaces
@@ -38,9 +37,9 @@ public class ClientGameState {
     }
 
     /**
-     * places a star at the given x,y coordinate
-     * @param x
-     * @param y
+     * Method places a star at the given x,y coordinate
+     * @param x x-coordinate
+     * @param y y-coordinate
      */
     public void setStar(int x, int y){
         if(x < 0 || x > gameState.length || y < 0 || y > gameState.length){
@@ -51,9 +50,9 @@ public class ClientGameState {
     }
 
     /**
-     * places a star at the given x,y coordinate
-     * @param x
-     * @param y
+     * Method places a star at the given x,y coordinate
+     * @param x x-coordinate
+     * @param y y-coordinate
      */
     public void setPoint(int x, int y){
         if(x < 0 || x > gameState.length || y < 0 || y > gameState.length){
@@ -63,9 +62,9 @@ public class ClientGameState {
     }
 
     /**
-     * places a star at the given x,y coordinate
-     * @param x
-     * @param y
+     * Method places a star at the given x,y coordinate
+     * @param x x-coordinate
+     * @param y y-coordinate
      */
     public void setSpace(int x, int y){
         if(x < 0 || x > gameState.length || y < 0 || y > gameState.length){
@@ -124,8 +123,6 @@ public class ClientGameState {
             boolean inSolution = false;
             for(int j = 0; j < puzzle.getSolution().size(); j++){
                 if(currStateStars.get(i).compareCoord(puzzle.getSolution().get(j))){
-                    //System.out.println("Current: " + currStateStars.get(i));
-                    //System.out.println("Solution: " + puzzle.getSolution().get(j));
                     inSolution = true;
                 }
             }

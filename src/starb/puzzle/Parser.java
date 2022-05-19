@@ -6,9 +6,13 @@ import java.util.Scanner;
 
 public class Parser {
 
+    /**
+     * Empty constructor. 
+     */
     public Parser(){}
 
     /**
+     * Parses the content of the given file into one String. 
      * @param fileName filepath of the puzzle file
      * @return string representation of the puzzle
      */
@@ -24,6 +28,7 @@ public class Parser {
                 sb.append(scan.nextLine());
                 sb.append("\n");
             }
+            scan.close();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -71,6 +76,8 @@ public class Parser {
     }
 
     /**
+     * Converts a puzzleAdt object into a String for 
+     * server and client interaction. 
      * @param p Puzzle Adt object
      * @return string representation of the puzzle
      */
@@ -112,6 +119,7 @@ public class Parser {
     }
 
     /**
+     * Converts a String type into a PuzzleAdt object. This method is used for client and server interaction. 
      * @param boardString string representation of the board
      * @return puzzle adt object
      */
@@ -125,6 +133,8 @@ public class Parser {
     }
 
     /**
+     * Gets the maximum number of stars needed for each column, row,
+     * and section in order to win the game. 
      * @param boardString string representation of the board
      * @return numStars that the board requires in each grid
      */
@@ -133,6 +143,9 @@ public class Parser {
     }
 
     /**
+     * Method takes the String representation of the puzzle
+     * and converts its contents into a char array for 
+     * easier implementation and value comparisons. 
      * @param boardString string representation of the board
      * @return 2d array of the board
      */
@@ -150,6 +163,8 @@ public class Parser {
     }
 
     /**
+     * Method takes a String version of the puzzle and reads the solution
+     * coordinates into an ArrayList of Coordinates. 
      * @param boardString string representation of the board
      * @return Arraylist<Coordinate> object with all the correct star locations
      */

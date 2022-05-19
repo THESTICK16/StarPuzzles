@@ -1,7 +1,6 @@
 package starb.server;
 
 import com.sun.net.httpserver.HttpServer;
-import starb.client.HttpRequestGenerator;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

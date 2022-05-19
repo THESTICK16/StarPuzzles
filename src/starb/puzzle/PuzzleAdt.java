@@ -8,6 +8,12 @@ public class PuzzleAdt {
     private int numStars;
     private ArrayList<Coordinate> solution;
 
+    /**
+     * Constructor initializes the game board, number of stars, and the solution. 
+     * @param board the int array that contains values determing the sections. 
+     * @param numStars max number of stars per row, column, and section
+     * @param solution the solution to the puzzle
+     */
     public PuzzleAdt(int[][] board, int numStars, ArrayList<Coordinate> solution){
         this.board = board;
         this.numStars = numStars;
@@ -15,6 +21,7 @@ public class PuzzleAdt {
     }
 
     /**
+     * Method returns the instance of the game board sections
      * Note: to get board dimension, call getBoard()
      * @return 2d array of the current board
      */
@@ -23,6 +30,7 @@ public class PuzzleAdt {
     }
 
     /**
+     * Method returns the number of stars needed for every row, column, and section
      * @return numStars for victory condition for a given puzzle
      */
     public int getNumStars() {
@@ -30,12 +38,11 @@ public class PuzzleAdt {
     }
 
     /**
+     * Method returns the solution to the puzzle. 
      * @return Arraylist<Coordinate> of the solution star locations
      */
     public ArrayList<Coordinate> getSolution() {
         return solution;
     }
-
-
 
 }

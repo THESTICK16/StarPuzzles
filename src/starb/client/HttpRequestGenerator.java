@@ -11,10 +11,18 @@ import java.net.http.HttpResponse;
  */
 public class HttpRequestGenerator {
 
-    public HttpRequestGenerator() {
+    /**
+     * Constructor for a new HttpRequestGenerator
+     * (empty initialization)
+     */
+    public HttpRequestGenerator() {}
 
-    }
-
+    /**
+     * Method returns the response sent from the server. 
+     * @return response from the server (a puzzle string)
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public String getNewPuzzle() throws IOException, InterruptedException {
         return sendRequest();
     }
@@ -35,7 +43,6 @@ public class HttpRequestGenerator {
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
         System.out.println("Response status: " + response.statusCode());
-        //System.out.println("Response body: " + response.body());
 
         return response.body();
     }

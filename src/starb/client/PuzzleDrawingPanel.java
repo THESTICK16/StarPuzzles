@@ -5,8 +5,6 @@ import starb.puzzle.Coordinate;
 import javax.swing.*;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -49,6 +47,7 @@ public class PuzzleDrawingPanel extends JComponent{
             paintEmptyBoard(g);
         }
     }
+
     /**
      * Paints an empty board (no sections)
      * @param g1
@@ -131,7 +130,7 @@ public class PuzzleDrawingPanel extends JComponent{
      * @param g
      */
     private void paintState(Graphics g){
-        //TODO if time: implement in a way that doesn't involve Coordinate class to reduce coupling
+
         ArrayList<Coordinate> stars = c.getPlacedStars();
         ArrayList<Coordinate> points = c.getPlacedPoints();
 
@@ -191,7 +190,6 @@ public class PuzzleDrawingPanel extends JComponent{
 
         g.setColor(Color.BLACK);
         g.fillPolygon(xPoints, yPoints, 10);
-        //g.fillRect(x, y, w, w);
     }
 
 
@@ -226,7 +224,7 @@ public class PuzzleDrawingPanel extends JComponent{
 
     /**
      * Checks to see if the ClientInteraction instance has been instantiated yet.
-     * @return true if the board has been initiated
+     * @return true if the board has been initiated, false otherwise
      */
     public boolean checkInit(){
         if(c.checkInit()){

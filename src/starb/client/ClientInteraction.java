@@ -190,7 +190,8 @@ public class ClientInteraction {
 
 
     /**
-     * 
+     * Converts a x or y value from the mouse click into a coordinate
+     * that corresponds to the game state. 
      * @param val
      * @return
      */
